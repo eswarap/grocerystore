@@ -13,7 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity(name="PRODUCT")
+@Entity
 @Access(AccessType.FIELD)
 public class Product implements Serializable  {
     

@@ -1,8 +1,11 @@
 package com.woven.grocerystore.service.impl;
 
 
+import java.util.Collection;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,5 +29,12 @@ public class AddressServiceImpl implements AddressService {
     public Address saveAddress(Address address) {
         em.persist(address);
         return address;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Collection<Address> fetchAllAddress() {
+        Query query = em.createQuery("from Address");
+        return (Collection<Address>) query.getResultList();
     }
 }

@@ -2,7 +2,10 @@ package com.woven.grocerystore.service;
 
 
 
+import java.util.Collection;
+
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +37,14 @@ public class AddressServiceTest {
         Address lAddress = new Address("1st Street","Bengalore","KA","560037");
         Address address = addressService.saveAddress(lAddress);
         Assert.assertNotNull(address);
-        System.out.println(address.toString());
+        System.out.println("######"+address.toString());
     }
+    
+    @Test
+    public void testFetchAllAddress() {
+        Collection<Address> address = addressService.fetchAllAddress();
+        Assert.assertNotNull(address);
+        System.out.println("address size "+address.size());
+    }
+    
 }

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,9 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Id;
 
-import org.springframework.util.StringUtils;
-
-@Entity(name = "ADDRESS")
+@Entity
 @Access(AccessType.FIELD)
 public class Address implements Serializable {
 
@@ -50,8 +49,8 @@ public class Address implements Serializable {
     @Column(name = "ZIPCODE")
     private String zipCode;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "address")
-    private Set<Customer> customer = new HashSet<Customer>(0);
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST, mappedBy = "address")
+    private Set<Customer> customers = new HashSet<Customer>(0);
  
     @Override
     public String toString() {
