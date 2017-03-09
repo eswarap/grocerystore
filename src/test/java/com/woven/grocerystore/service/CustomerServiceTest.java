@@ -1,7 +1,6 @@
 package com.woven.grocerystore.service;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +31,16 @@ public class CustomerServiceTest {
     private PhoneService phoneService;
     
     @Test
-    public void testSaveCustomer() {
+    public void test_customer_jpa_methods() {
         Address address = addressService.getAddress(1l);
         Phone phone = phoneService.fetchPhone(1l);
         Customer lcustomer = new Customer("Arun","arun@nomanworld.com",address,phone);
         Customer customer = customerService.saveCustomer(lcustomer);
         Assert.assertNotNull(customer);
         System.out.println("###########"+customer.toString());
-    }
-    
-    @Test
-    public void testFetchCustomer() {
-        Customer customer = customerService.fetchCustomer(1l);
+        customer = customerService.fetchCustomer(1l);
         Assert.assertNotNull(customer);
         System.out.println(String.format("customer is %s",customer.toString()));
     }
+
 }
