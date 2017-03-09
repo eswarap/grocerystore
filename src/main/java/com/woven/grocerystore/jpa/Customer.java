@@ -53,8 +53,8 @@ public class Customer implements Serializable  {
         return new StringBuilder().append(" customerId =").append(customerId)
                                   .append(" customerName =").append(customerName)
                                   .append(" email =").append(email)
-                                  .append(" address =").append(address.toString())
-                                  .append(" phone =").append(phone.toString())
+                                  .append(" address =").append(address==null?"null":address.toString())
+                                  .append(" phone =").append(phone==null?"null":phone.toString())
                                   .toString();
     }
 }
