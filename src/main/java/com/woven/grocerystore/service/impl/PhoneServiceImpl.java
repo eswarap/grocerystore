@@ -1,40 +1,31 @@
 package com.woven.grocerystore.service.impl;
 
-import java.util.Collection;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.PersistenceContext;
-
+import com.woven.grocerystore.jpa.Phone;
+import com.woven.grocerystore.service.GroceryService;
+import com.woven.grocerystore.service.PhoneService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.woven.grocerystore.jpa.Phone;
-import com.woven.grocerystore.service.PhoneService;
+import javax.persistence.Query;
+import java.util.Collection;
 
 @Service(value="phoneService")
 @Transactional
-public class PhoneServiceImpl implements PhoneService {
-
-    @PersistenceContext(unitName="GS_UNIT")
-    private EntityManager em;
-    
+public class PhoneServiceImpl extends GroceryService<Phone> implements PhoneService {
     @Override
-    public Phone fetchPhone(Long phoneId) {
-        return em.find(Phone.class, phoneId);
+    public Phone save(Phone phone) {
+        return super.save(phone);
     }
 
     @Override
-    public Phone savePhone(Phone phone) {
-        em.persist(phone);
-        return phone;
+    public Phone find(Long id) {
+        return super.find(id);
     }
 
-    @SuppressWarnings("unchecked")
-    @Override    
+    @Override
     public Collection<Phone> fetchAllPhone() {
         Query query = em.createQuery("from Phone");
         return (Collection<Phone>) query.getResultList();
-  }
+    }
     
 }

@@ -1,39 +1,32 @@
 package com.woven.grocerystore.service.impl;
 
-import java.util.Collection;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
 import com.woven.grocerystore.jpa.Customer;
 import com.woven.grocerystore.service.CustomerService;
-
+import com.woven.grocerystore.service.GroceryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Query;
+import java.util.Collection;
+
 @Service(value="customerService")
 @Transactional
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl extends GroceryService<Customer> implements CustomerService {
 
-    @PersistenceContext(unitName="GS_UNIT")
-    private EntityManager em;
-    
-    @Override
-    public Customer fetchCustomer(final Long customerId) {
-        return em.find(Customer.class, customerId);
-    }
 
-    @Override
-    public Customer saveCustomer(Customer customer) {
-        em.persist(customer);
-        return customer;
-    }
-
-    @SuppressWarnings("unchecked")
     @Override
     public Collection<Customer> fetchAllCustomer() {
         Query query = em.createQuery("from Customer");
         return (Collection<Customer>) query.getResultList();
+    }
+
+    @Override
+    public Customer save(Customer customer) {
+        return super.save(customer);
+    }
+
+    @Override
+    public Customer find(Long id) {
+        return super.find(id);
     }
 }

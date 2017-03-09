@@ -28,11 +28,11 @@ public class PhoneServiceTest {
         Random randomMobile = new Random();
         Integer mobile = randomMobile.nextInt(900000000)+100000000;
         Phone lphone = new Phone("Mobile",mobile.toString());
-        Phone phone = phoneService.savePhone(lphone);
+        Phone phone = phoneService.save(lphone);
         Assert.assertNotNull(phone);
         System.out.println(String.format("phone is %s",phone.toString()));
         
-        phone = phoneService.fetchPhone(1l);
+        phone = phoneService.find(1l);
         Assert.assertNotNull(phone);
         System.out.println(String.format("phone is %s",phone.toString()));
         Collection<Phone> phones = phoneService.fetchAllPhone();

@@ -32,13 +32,13 @@ public class CustomerServiceTest {
     
     @Test
     public void test_customer_jpa_methods() {
-        Address address = addressService.getAddress(1l);
-        Phone phone = phoneService.fetchPhone(1l);
+        Address address = addressService.find(1l);
+        Phone phone = phoneService.find(1l);
         Customer lcustomer = new Customer("Arun","arun@nomanworld.com",address,phone);
-        Customer customer = customerService.saveCustomer(lcustomer);
+        Customer customer = customerService.save(lcustomer);
         Assert.assertNotNull(customer);
         System.out.println("###########"+customer.toString());
-        customer = customerService.fetchCustomer(1l);
+        customer = customerService.find(1l);
         Assert.assertNotNull(customer);
         System.out.println(String.format("customer is %s",customer.toString()));
     }

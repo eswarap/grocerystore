@@ -26,17 +26,15 @@ public class AddressServiceTest {
     
     @Test
     public void testGetAddress() {
-        Address address = addressService.getAddress(1l);
+        Address address = addressService.find(1l);
         Assert.assertNotNull(address);
-        System.out.println(String.format("address is %s",address.toString()));
     }
     
     @Test
     public void testSaveAddress() {
         Address lAddress = new Address("1st Street","Bengalore","KA","560037");
-        Address address = addressService.saveAddress(lAddress);
+        Address address = addressService.save(lAddress);
         Assert.assertNotNull(address);
-        System.out.println("######"+address.toString());
     }
     
     @Test

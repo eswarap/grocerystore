@@ -1,14 +1,12 @@
 package com.woven.grocerystore.service;
 
-import java.util.Collection;
-
 import com.woven.grocerystore.jpa.Phone;
 
-public interface PhoneService {
-    
-    Phone fetchPhone(final Long phoneId);
-    
-    Phone savePhone(final Phone phone);
-    
-    public Collection<Phone> fetchAllPhone();
+import java.util.Collection;
+
+/**
+ * Created by eswaraprasadh on 09-03-2017.
+ */
+public interface PhoneService extends GenericGroceryService<Phone> {
+    Collection<Phone> fetchAllPhone();
 }

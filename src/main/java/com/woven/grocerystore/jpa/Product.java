@@ -1,17 +1,7 @@
 package com.woven.grocerystore.jpa;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 @Access(AccessType.FIELD)
@@ -24,19 +14,23 @@ public class Product implements Serializable  {
     @GeneratedValue(strategy=GenerationType.AUTO) 
     public Long productId;
     
-    @Column(name="PRODUCTNAME")
+    @Column(name="PRODUCT_NAME")
     public String productName;
     
     @Column(name="DESCRIPTION")
     public String description;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "office_address_id")
-    private Address address;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "phone_id")
-    private Phone phone;
-    
-    
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public Product() {
+
+    }
+
+    public Product(String productName,String description,Category category) {
+        this.productName = productName;
+        this.description = description;
+        this.category = category;
+    }
 }

@@ -1,40 +1,32 @@
 package com.woven.grocerystore.service.impl;
 
 
-import java.util.Collection;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
+import com.woven.grocerystore.jpa.Address;
+import com.woven.grocerystore.service.AddressService;
+import com.woven.grocerystore.service.GroceryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.woven.grocerystore.jpa.Address;
-import com.woven.grocerystore.service.AddressService;
+import javax.persistence.Query;
+import java.util.Collection;
 
 @Service(value="addressService")
 @Transactional
-public class AddressServiceImpl implements AddressService {
-   
-    @PersistenceContext(unitName="GS_UNIT")
-    private EntityManager em;
-    
-    @Override
-    public Address getAddress(final Long addressId) {
-        return em.find(Address.class,addressId);
-    }
+public class AddressServiceImpl extends GroceryService<Address>  implements AddressService {
 
-    @Override
-    public Address saveAddress(Address address) {
-        em.persist(address);
-        return address;
-    }
-
-    @SuppressWarnings("unchecked")
     @Override
     public Collection<Address> fetchAllAddress() {
-        Query query = em.createQuery("from Address");
+        Query query = this.em.createQuery("from Address");
         return (Collection<Address>) query.getResultList();
+    }
+
+    @Override
+    public Address save(Address address) {
+       return super.save(address);
+    }
+
+    @Override
+    public Address find(Long addressId) {
+        return super.find(addressId);
     }
 }
