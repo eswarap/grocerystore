@@ -36,7 +36,7 @@ public class Address implements Serializable {
     @Column(name = "STATE")
     private String state;
 
-    @Column(name = "ZIPCODE")
+    @Column(name = "ZIP_CODE")
     private String zipCode;
 
     @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST, mappedBy = "address")
