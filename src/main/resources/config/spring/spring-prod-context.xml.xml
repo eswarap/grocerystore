@@ -13,13 +13,13 @@ xsi:schemaLocation="
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- import the dataSource definition -->
-    <import resource="database-config.xml"/>
+    <import resource="prod-db-config.xml"/>
     
-     <tx:annotation-driven />
+    <tx:annotation-driven />
      
     <context:component-scan base-package="com.woven.grocerystore.service" />
     
-     <beans profile="jpa">
+     <beans profile="jpa-pgsql">
         <!--
             Loads JPA beans
             Will automatically be transactional due to @Transactional.
@@ -33,7 +33,7 @@ xsi:schemaLocation="
               p:dataSource-ref="dataSource">
             <property name="jpaVendorAdapter">
                 <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
-                      p:database="${jpa.database}" p:showSql="${jpa.showSql}" p:generateDdl="${jpa.generateDdl}" />
+                      p:database="${pgsql.jpa.database}" p:showSql="${pgsql.jpa.showSql}" p:generateDdl="${pgsql.jpa.generateDdl}" />
                 <!-- the 'database' parameter refers to the database dialect being used.
                 	By default, Hibernate will use a 'HSQL' dialect because 'jpa.database' has been set to 'HSQL'
                 	inside file database.properties
@@ -48,7 +48,6 @@ xsi:schemaLocation="
         <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
               p:entityManagerFactory-ref="entityManagerFactory"/>
-
 
         <!--
             Post-processor to perform exception translation on @Repository classes (from native

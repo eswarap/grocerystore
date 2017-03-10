@@ -20,14 +20,14 @@
 
     <!-- Configurer that replaces ${...} placeholders with values from a properties file -->
     <!-- (in this case, JDBC-related settings for the dataSource definition below) -->
-    <context:property-placeholder location="classpath:database.properties" system-properties-mode="OVERRIDE"/>
+    <context:property-placeholder location="config/db/pgsql.properties" system-properties-mode="OVERRIDE"/>
 
     <!-- DataSource configuration for the tomcat jdbc connection pool 
     See here for more details on commons-dbcp versus tomcat-jdbc: 
     http://blog.ippon.fr/2013/03/13/improving-the-performance-of-the-spring-petclinic-sample-application-part-3-of-5/-->
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
-          p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
-          p:username="${jdbc.username}" p:password="${jdbc.password}"/>
+          p:driverClassName="${pgsql.jdbc.driverClassName}" p:url="${pgsql.jdbc.url}"
+          p:username="${pgsql.jdbc.username}" p:password="${pgsql.jdbc.password}"/>
     
     <beans profile="javaee" >
         <!-- JNDI DataSource for JEE environments -->

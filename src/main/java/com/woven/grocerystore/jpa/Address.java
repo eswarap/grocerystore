@@ -11,6 +11,7 @@ public class Address implements Serializable {
 
     private static final long serialVersionUID = 1l;
 
+    //Empty constructor required for hibernate entities
     public Address() {
         
     }
