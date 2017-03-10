@@ -13,7 +13,7 @@ xsi:schemaLocation="
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!-- import the dataSource definition -->
-    <import resource="dev-db-config.xml"/>
+    <import resource="classpath:config/spring/dev-config.xml"/>
     
     <tx:annotation-driven />
      
