@@ -13,6 +13,6 @@ xsi:schemaLocation="
     http://www.springframework.org/schema/tx/spring-tx.xsd">
 
    <import resource="classpath:config/spring/prod-context.xml"/>
-
+    <bean name="/hello.htm" class="com.woven.grocerystore.controller.HelloController"/>
 </beans>
          
