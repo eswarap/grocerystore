@@ -20,11 +20,11 @@ public class Customer implements Serializable  {
     @Column(name="EMAIL")
     private String email;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ADDRESS_ID")
     private Address address;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="PHONE_ID")
     private Phone phone;
   

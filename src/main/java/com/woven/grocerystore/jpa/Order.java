@@ -2,6 +2,8 @@ package com.woven.grocerystore.jpa;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -12,7 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -39,13 +40,11 @@ public class Order implements Serializable {
     private Long orderId;
     
     @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
-    @JoinColumn(name="CUSTOMER_ID")
     private Customer customer;
     
     @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
-    @JoinColumn(name="ORDERITEM_ID")
-    private OrderItem orderItem;
-    
+    private Set<OrderItem> orderItem = new HashSet<OrderItem>(0);
+     
     @Column(name="ORDER_STATUS")
     private String orderStatus;
     

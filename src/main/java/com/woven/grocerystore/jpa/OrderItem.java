@@ -11,8 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType; 
-import javax.persistence.JoinColumn;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -26,12 +27,11 @@ public class OrderItem implements Serializable {
      @GeneratedValue(strategy=GenerationType.AUTO) 
      private Long orderItemId;
      
-     @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
+     @ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
      @JoinColumn(name="ORDER_ID")
      private Order order;
 
      @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
-     @JoinColumn(name="PRODUCT_ID")
      private Product product;
     
      @Column(name="UNIT_PRICE")

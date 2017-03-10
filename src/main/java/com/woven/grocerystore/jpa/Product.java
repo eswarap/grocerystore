@@ -21,7 +21,7 @@ public class Product implements Serializable  {
     public String description;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
     public Product() {
