@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/grocerystore-1.0" docBase="grocerystore-1.0"
+   crossContext="true" reloadable="true" debug="1">
+
+  <Resource name="jdbc/dd0gksdhoedo5d" auth="Container" type="javax.sql.DataSource"
+               maxActive="50" maxIdle="30" maxWait="10000"
+               username="mdhhlkbhdshkaq" password="8c7ac51bef279abc214a565730ebaca9e58cb23919057809ca6412b4e3d49219"
+               driverClassName="org.postgresql.Driver"
+               url="jdbc:postgres://mdhhlkbhdshkaq:8c7ac51bef279abc214a565730ebaca9e58cb23919057809ca6412b4e3d49219@ec2-184-72-216-69.compute-1.amazonaws.com:5432/dd0gksdhoedo5d"/>
+
+<ResourceLink name="jdbc/dd0gksdhoedo5d"
+             global="jdbc/grocerystore"
+              type="javax.sql.DataSource" />
+              
+</Context>
