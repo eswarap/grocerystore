@@ -9,4 +9,15 @@
     
    <import resource="classpath:config/spring/prod-context.xml"/>
    <bean name="/hello.htm" class="com.woven.grocerystore.controller.HelloController"/>
+    
+    <mvc:annotation-driven />
+
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <mvc:default-servlet-handler />
+    
 </beans> 
