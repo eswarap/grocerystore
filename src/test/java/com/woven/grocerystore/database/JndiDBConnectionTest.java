@@ -24,8 +24,7 @@ public class JndiDBConnectionTest {
    @Test
    public void testDbConnection() throws Exception {
         Connection conn = dataSource.getConnection();   
-        Assert.assertNotNull(conn);
-        
+        Assert.assertNotNull(conn);     
     }
    
 }
