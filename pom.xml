@@ -119,6 +119,7 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4-1200-jdbc41</version>
+             <scope>runtime</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
@@ -200,10 +201,15 @@
         	          	  <configuration>
             	          	  <artifactItems>
                          		   <artifactItem>
-                         	       <groupId>com.github.jsimone</groupId>
-                           	     <artifactId>webapp-runner</artifactId>
+                         	          <groupId>com.github.jsimone</groupId>
+                           	          <artifactId>webapp-runner</artifactId>
                             	    <version>8.5.11.2</version>
                              	   <destFileName>webapp-runner.jar</destFileName>
+                         	   </artifactItem>
+                         	   <artifactItem>
+                                    <groupId>org.postgresql</groupId>
+                                    <artifactId>postgresql</artifactId>
+                                    <version>9.4-1200-jdbc41</version>
                          	   </artifactItem>
                        		 </artifactItems>
                   		  </configuration>
