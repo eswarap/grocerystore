@@ -19,7 +19,7 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
 
     @Test
     public void testGetCategory() {
-        Category category = categoryService.find(1l);
+        Category category = categoryService.find(2l);
         Assert.assertNotNull(category);
     }
 
@@ -34,6 +34,6 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
     public void testFetchAllCategory() {
         Collection<Category> categories = categoryService.fetchAllCategory();
         Assert.assertNotNull(categories);
-        System.out.println("address size "+categories.size());
+        System.out.println("categories size "+categories.size());
     }
 }

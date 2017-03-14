@@ -20,7 +20,7 @@ public class AddressServiceTest extends BaseIntegrationServiceTest {
     
     @Test
     public void testGetAddress() {
-        Address address = addressService.find(1l);
+        Address address = addressService.find(11l);
         Assert.assertNotNull(address);
     }
     

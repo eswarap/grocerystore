@@ -27,14 +27,14 @@ public class CustomerServiceTest extends BaseIntegrationServiceTest {
     
     @Test
     public void testGetCustomer() {
-        Customer customer = customerService.find(1l);
+        Customer customer = customerService.find(10l);
         Assert.assertNotNull(customer);
     }
 
     @Test
     public void testSaveCustomer() {
-        Address address = addressService.find(1l);
-        Phone phone = phoneService.find(1l);
+        Address address = addressService.find(11l);
+        Phone phone = phoneService.find(4l);
         Customer lcustomer = new Customer("Arun","arun@nomanworld.com",address,phone);
         Customer customer = customerService.save(lcustomer);
         Assert.assertNotNull(customer);

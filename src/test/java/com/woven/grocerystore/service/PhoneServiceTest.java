@@ -18,8 +18,8 @@ public class PhoneServiceTest extends BaseIntegrationServiceTest {
  
     @Test
     public void testGetPhone() {
-        Phone phone = phoneService.find(1l);
-        Assert.assertNull(phone);
+        Phone phone = phoneService.find(4l);
+        Assert.assertNotNull(phone);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class PhoneServiceTest extends BaseIntegrationServiceTest {
     }
 
     @Test
-    public void testFetchAllPhone() {
+    public void testFetchAllPhones() {
         Collection<Phone> phones = phoneService.fetchAllPhone();
         Assert.assertNotNull(phones);
         System.out.println("phones size"+phones.size());
