@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.Address;
 
 
@@ -20,12 +21,12 @@ public class AddressServiceTest extends BaseIntegrationServiceTest {
     
     @Test
     public void testGetAddress() {
-        Address address = addressService.find(11l);
+        Address address = addressService.find(1l);
         Assert.assertNotNull(address);
     }
     
     @Test
-    public void testSaveAddress() {
+    public void testCreateAddress() {
         Address lAddress = new Address("1st Street","Bengalore","KA","560037");
         Address address = addressService.save(lAddress);
         Assert.assertNotNull(address);

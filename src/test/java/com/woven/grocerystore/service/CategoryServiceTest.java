@@ -1,6 +1,8 @@
 package com.woven.grocerystore.service;
 
+import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.Category;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +21,12 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
 
     @Test
     public void testGetCategory() {
-        Category category = categoryService.find(2l);
+        Category category = categoryService.find(1l);
         Assert.assertNotNull(category);
     }
 
     @Test
-    public void testSaveCategory() {
+    public void testCreateCategory() {
         Category lcategory = new Category("TV","Electronics");
         Category category = categoryService.save(lcategory);
         Assert.assertNotNull(category);

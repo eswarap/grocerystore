@@ -1,4 +1,4 @@
-package com.woven.grocerystore.controller;
+package com.woven.grocerystore.base;
 
 import org.junit.Before;
 

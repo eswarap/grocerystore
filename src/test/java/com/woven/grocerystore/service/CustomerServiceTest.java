@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.Address;
 import com.woven.grocerystore.jpa.Customer;
 import com.woven.grocerystore.jpa.Phone;
@@ -27,12 +28,12 @@ public class CustomerServiceTest extends BaseIntegrationServiceTest {
     
     @Test
     public void testGetCustomer() {
-        Customer customer = customerService.find(10l);
+        Customer customer = customerService.find(1l);
         Assert.assertNotNull(customer);
     }
 
     @Test
-    public void testSaveCustomer() {
+    public void testCreateCustomer() {
         Address address = addressService.find(11l);
         Phone phone = phoneService.find(4l);
         Customer lcustomer = new Customer("Arun","arun@nomanworld.com",address,phone);

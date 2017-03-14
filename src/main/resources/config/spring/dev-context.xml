@@ -43,6 +43,11 @@ xsi:schemaLocation="
             <!-- gDickens: BOTH Persistence Unit and Packages to Scan are NOT compatible, persistenceUnit will win -->
             <property name="persistenceUnitName" value="GS_UNIT"/>
             <property name="packagesToScan" value="com.woven.grocerystore.jpa"/>
+              <property name="jpaProperties">
+              <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+              </props>
+            </property>
         </bean>
 
         <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->

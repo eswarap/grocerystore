@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.Phone;
 
 public class PhoneServiceTest extends BaseIntegrationServiceTest {
@@ -18,12 +19,12 @@ public class PhoneServiceTest extends BaseIntegrationServiceTest {
  
     @Test
     public void testGetPhone() {
-        Phone phone = phoneService.find(4l);
+        Phone phone = phoneService.find(1l);
         Assert.assertNotNull(phone);
     }
 
     @Test
-    public void testSavePhone() {
+    public void testCreatePhone() {
         Random randomMobile = new Random();
         Integer mobile = randomMobile.nextInt(900000000)+100000000;
         Phone lphone = new Phone("Mobile",mobile.toString());
