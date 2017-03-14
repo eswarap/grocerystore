@@ -23,7 +23,7 @@
     </listener>
     
      <servlet>
-           <servlet-name>store</servlet-name>
+           <servlet-name>mvc</servlet-name>
            <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
             <init-param>
               <param-name>contextConfigLocation</param-name>
@@ -34,15 +34,9 @@
        
     
       <servlet-mapping>
-           <servlet-name>store</servlet-name>
-           <url-pattern>*.htm</url-pattern>
+           <servlet-name>mvc</servlet-name>
+           <url-pattern>/</url-pattern>
       </servlet-mapping>
-    
-      <welcome-file-list>
-        <welcome-file>
-          hello.jsp
-        </welcome-file>
-      </welcome-file-list> 
       
     <session-config>
         <session-timeout>
