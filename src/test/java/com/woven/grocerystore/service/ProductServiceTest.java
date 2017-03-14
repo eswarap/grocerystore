@@ -25,12 +25,11 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     @Qualifier("categoryService")
     private CategoryService categoryService;
 
-
     @Test
     public void testGetProduct() {
         Product product = productService.find(1l);
         assertNotNull(product);
-        assertEquals(product.productId.longValue(),1l);
+        assertEquals(product.getProductId().longValue(),1l);
     }
 
     @Test
@@ -39,7 +38,7 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
         Product product = new Product("LED Smart TV","Samsung 52 inch",category);
         productService.save(product);
         assertNotNull(product);
-        assertEquals(1l,product.productId.longValue());
+        assertEquals(1l,product.getProductId().longValue());
     }
 
     @Test
