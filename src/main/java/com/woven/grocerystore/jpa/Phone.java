@@ -2,11 +2,9 @@ package com.woven.grocerystore.jpa;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
-@Access(AccessType.FIELD)
 public class Phone implements Serializable {
     
      private static final long serialVersionUID = 1l;
@@ -14,13 +12,7 @@ public class Phone implements Serializable {
      public Phone() {
          
      }
-     
-     public Phone(String phoneType,String phoneNumber) {
-         this.phoneType = phoneType;
-         this.phoneNumber = phoneNumber;
-     }
-     
-     
+          
      @Id
      @Column(name="PHONE_ID")
      @GeneratedValue(strategy=GenerationType.AUTO)
@@ -31,10 +23,38 @@ public class Phone implements Serializable {
      
      @Column(name="PHONE_NUMBER")
 	 private String phoneNumber;
-	 
-	 @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST,mappedBy = "phone")
-     private Set<Customer> customers = new HashSet<Customer>(0);
+	      
+     public Long getPhoneId() {
+        return phoneId;
+     }
+    
+     public void setPhoneId(Long phoneId) {
+        this.phoneId = phoneId;
+     }
+    
+     public String getPhoneNumber() {
+        return phoneNumber;
+     }  
      
+     public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+     }
+     
+     public String getPhoneType() {
+        return phoneType;
+     }
+     
+     public void setPhoneType(String phoneType) {
+        this.phoneType = phoneType;
+     }
+     
+     public Phone(String phoneType,String phoneNumber) {
+         this.phoneType = phoneType;
+         this.phoneNumber = phoneNumber;
+     }
+     
+
+
      @Override
      public String toString() {
          return new StringBuilder().append(" phoneId : ").append(phoneId)

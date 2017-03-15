@@ -27,18 +27,12 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     private CategoryService categoryService;
 
     @Test
-    public void testGetProduct() {
-        Product product = productService.find(1l);
-        assertNotNull(product);
-    }
-
-    @Test
     public void testCreateProduct() {
         Category category = categoryService.find(1l);
         Product product = new Product("LED Smart TV","Samsung 52 inch",category);
         productService.save(product);
         assertNotNull(product);
-        Assert.assertTrue("success",product.getProductId()>1l);
+        Assert.assertTrue("success",product.getProductId()>=1l);
     }
 
     @Test
@@ -47,4 +41,11 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
         assertNotNull(products);
         Assert.assertTrue("product size",products.size()>=1);
     }
+    
+    @Test
+    public void testGetProduct() {
+        Product product = productService.find(1l);
+        assertNotNull(product);
+    }
+    
 }

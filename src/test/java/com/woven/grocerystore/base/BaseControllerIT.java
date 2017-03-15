@@ -1,7 +1,6 @@
 package com.woven.grocerystore.base;
 
 import org.junit.Before;
-
 import org.junit.runner.RunWith;
 
 import org.mockito.MockitoAnnotations;

@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Access(AccessType.FIELD)
 public class Product implements Serializable  {
     
     private static final long serialVersionUID = 1l;

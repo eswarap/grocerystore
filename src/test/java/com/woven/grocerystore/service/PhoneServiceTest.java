@@ -16,12 +16,6 @@ public class PhoneServiceTest extends BaseIntegrationServiceTest {
     @Autowired
     @Qualifier("phoneService")
     private PhoneService phoneService;
- 
-    @Test
-    public void testGetPhone() {
-        Phone phone = phoneService.find(1l);
-        Assert.assertNotNull(phone);
-    }
 
     @Test
     public void testCreatePhone() {
@@ -36,7 +30,14 @@ public class PhoneServiceTest extends BaseIntegrationServiceTest {
     public void testFetchAllPhones() {
         Collection<Phone> phones = phoneService.fetchAllPhone();
         Assert.assertNotNull(phones);
-        System.out.println("phones size"+phones.size());
+        LOG.info("phones size"+phones.size());
     }
-
+    
+     @Test
+    public void testGetPhone() {
+        Phone phone = phoneService.find(1l);
+//        LOG.info("phone ",phone.toString());
+        Assert.assertNotNull(phone);
+    }
+ 
 }
