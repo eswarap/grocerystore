@@ -2,12 +2,10 @@ language: java
 jdk:
 
   - oraclejdk8
-test:
-  override:
-    - mvn clean verify
-  post:
-    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - find . -type f -regex ".*/target/*-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+install: 
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+  - mvn verify jacoco:report
 after_success:
 
   - bash <(curl -s https://codecov.io/bash) -t 3ba481f1-903c-4cee-90cd-a51f143aefa2
