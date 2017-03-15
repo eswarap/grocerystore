@@ -44,8 +44,12 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     
     @Test
     public void testGetProduct() {
-        Product product = productService.find(1l);
-        assertNotNull(product);
+        Category category = categoryService.find(1l);
+        Product actual = new Product("Samsung","Samsung 52 inch",category);
+        productService.save(actual);
+        Product target = productService.find(actual.getProductId());
+        assertNotNull(actual);
+        assertNotNull(target);
     }
     
 }

@@ -21,8 +21,14 @@ public class AddressServiceTest extends BaseIntegrationServiceTest {
     
     @Test
     public void testGetAddress() {
-        Address address = addressService.find(1l);
-        Assert.assertNotNull(address);
+        Address lAddress = new Address("1st Street","Bengalore","KA","560037");
+        Address actual = addressService.save(lAddress);
+        Address target = addressService.find(actual.getAddressId());
+        Assert.assertNotNull(actual);
+        Assert.assertNotNull(target);
+        Assert.assertEquals(actual.getCity(),target.getCity());
+        Assert.assertEquals(actual.getStreet(),target.getStreet());
+        Assert.assertEquals(actual.getZipCode(),target.getZipCode());
     }
     
     @Test

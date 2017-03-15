@@ -20,6 +20,9 @@
 		<postgresql.version>9.4.1211</postgresql.version>
 		<junit.version>4.12</junit.version>
 		<spring-data-jpa.version>1.11.1.RELEASE</spring-data-jpa.version>
+		 <skipTests>false</skipTests>
+        <skipITs>${skipTests}</skipITs>
+        <skipUTs>${skipTests}</skipUTs>
     </properties>
     <dependencyManagement>
 		<dependencies>
@@ -254,7 +257,6 @@
         </dependency>
     </dependencies>
     <build>
-        <defaultGoal>clean install</defaultGoal>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -263,6 +265,23 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                     <skipTests>${skipTests}</skipTests>
+                     <skipITs>${skipITs}</skipITs>
+                </configuration>
+                <executions>
+                  <execution>
+                    <goals>
+                      <goal>integration-test</goal>
+                      <goal>verify</goal>
+                    </goals>
+                  </execution>
+                </executions>
             </plugin>
             <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-war-plugin -->
            <plugin>
@@ -275,10 +294,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18.1</version>
                 <configuration>
-                    <systemPropertyVariables>
-                        <org.slf4j.simpleLogger.defaultLogLevel>DEBUG</org.slf4j.simpleLogger.defaultLogLevel>
-                        <org.slf4j.simpleLogger.showDateTime>true</org.slf4j.simpleLogger.showDateTime>
-                    </systemPropertyVariables>
+                     <skipTests>${skipUTs}</skipTests>
                 </configuration>
             </plugin>            
             <!--<plugin>
