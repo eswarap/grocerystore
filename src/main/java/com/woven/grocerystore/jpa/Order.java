@@ -5,17 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @Access(AccessType.FIELD)
@@ -40,9 +30,10 @@ public class Order implements Serializable {
     private Long orderId;
     
     @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
+    @JoinColumn(name="CUSTOMER_ID")
     private Customer customer;
     
-    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST,mappedBy = "order")
     private Set<OrderItem> orderItem = new HashSet<OrderItem>(0);
      
     @Column(name="ORDER_STATUS")
@@ -53,7 +44,61 @@ public class Order implements Serializable {
     
     @Column(name="TOTAL")
     private Integer total;
-    
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public Order setOrderId(Long orderId) {
+        this.orderId = orderId;
+        return this;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Order setCustomer(Customer customer) {
+        this.customer = customer;
+        return this;
+    }
+
+    public Set<OrderItem> getOrderItem() {
+        return orderItem;
+    }
+
+    public Order setOrderItem(Set<OrderItem> orderItem) {
+        this.orderItem = orderItem;
+        return this;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public Order setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+        return this;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public Order setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+        return this;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public Order setTotal(Integer total) {
+        this.total = total;
+        return this;
+    }
+
     @Override
     public String toString() {
         return new StringBuilder().append("ORDER_ID:").append(orderId).

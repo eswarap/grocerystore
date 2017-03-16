@@ -32,6 +32,7 @@ public class OrderItem implements Serializable {
      private Order order;
 
      @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
+     @JoinColumn(name="PRODUCT_ID")
      private Product product;
     
      @Column(name="UNIT_PRICE")

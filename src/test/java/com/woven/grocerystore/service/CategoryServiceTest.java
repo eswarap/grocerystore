@@ -21,8 +21,11 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
 
     @Test
     public void testGetCategory() {
-        Category category = categoryService.find(1l);
-        Assert.assertNotNull(category);
+        Category lcategory = new Category("Mobile","Handheld");
+        Category actual = categoryService.save(lcategory);
+        Category target = categoryService.find(actual.getCategoryId());
+        Assert.assertNotNull(actual);
+        Assert.assertNotNull(target);
     }
 
     @Test

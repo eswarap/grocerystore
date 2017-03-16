@@ -28,11 +28,11 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
 
     @Test
     public void testCreateProduct() {
-        Category category = categoryService.find(1l);
+        Category lcategory = new Category("Mobile","Handheld");
+        Category category = categoryService.save(lcategory);
         Product product = new Product("LED Smart TV","Samsung 52 inch",category);
         productService.save(product);
         assertNotNull(product);
-        Assert.assertTrue("success",product.getProductId()>=1l);
     }
 
     @Test
