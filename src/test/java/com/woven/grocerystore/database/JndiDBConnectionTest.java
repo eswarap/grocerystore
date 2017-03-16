@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,6 +23,7 @@ public class JndiDBConnectionTest {
   private DataSource dataSource;
    
    @Test
+   @Ignore
    public void testDbConnection() throws Exception {
         Connection conn = dataSource.getConnection();   
         Assert.assertNotNull(conn);     

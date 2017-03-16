@@ -14,8 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by eswaraprasadh on 09-03-2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:config/spring/prod-context.xml"})
-@ActiveProfiles("jpa-pgsql")
+@ContextConfiguration(locations={"classpath:config/spring/dev-context.xml"})
+@ActiveProfiles("jpa-hsql")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public abstract class BaseIntegrationServiceTest {
     
