@@ -33,7 +33,7 @@ xsi:schemaLocation="
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
               p:dataSource-ref="dataSource">
             <property name="jpaVendorAdapter">
-                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" p:databasePlatform="${pgsql.hibernate.dialect}"
                       p:database="${pgsql.jpa.database}" p:showSql="${pgsql.jpa.showSql}" p:generateDdl="${pgsql.jpa.generateDdl}" />
                 <!-- the 'database' parameter refers to the database dialect being used.
                 	By default, Hibernate will use a 'HSQL' dialect because 'jpa.database' has been set to 'HSQL'
@@ -46,7 +46,8 @@ xsi:schemaLocation="
             
             <property name="jpaProperties">
               <props>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                    <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                  <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
               </props>
             </property>
         

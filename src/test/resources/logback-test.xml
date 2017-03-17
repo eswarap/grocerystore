@@ -14,8 +14,8 @@
         </encoder>
     </appender>
 
-    <logger name="com.woven.grocerystore" level="ERROR"/>
-    <logger name="org.hibernate" level="DEBUG"/>
+    <logger name="com.woven.grocerystore" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
     <logger name="org.springframework" level="DEBUG"/>         
     
     <root level="DEBUG">

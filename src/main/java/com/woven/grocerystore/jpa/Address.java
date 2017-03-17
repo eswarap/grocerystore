@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Access(AccessType.FIELD)
 public class Address implements Serializable {
 
     private static final long serialVersionUID = 1l;

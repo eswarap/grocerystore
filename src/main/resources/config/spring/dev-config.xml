@@ -28,7 +28,7 @@
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
           p:driverClassName="${hsql.jdbc.driverClassName}" p:url="${hsql.jdbc.url}"
           p:username="${hsql.jdbc.username}" p:password="${hsql.jdbc.password}"/>
-    
+
     <beans profile="javaee" >
         <!-- JNDI DataSource for JEE environments -->
         <jee:jndi-lookup id="dataSource" jndi-name="jdbc/grocerystore"/>

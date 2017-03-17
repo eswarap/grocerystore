@@ -7,8 +7,8 @@ import javax.sql.DataSource;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
+
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:config/spring/prod-context.xml"})
-@ActiveProfiles("jpa-pgsql")
+@ActiveProfiles("jpa-pqsql")
 public class JndiDBConnectionTest {
    
   @Autowired(required=true)
