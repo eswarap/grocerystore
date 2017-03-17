@@ -16,7 +16,11 @@
 
     <logger name="com.woven.grocerystore" level="DEBUG"/>
     
-    <logger name="org.hibernate.tool.hbm2ddl" level="DEBUG"/>
+    <logger name="org.springframework" level="DEBUG"/>
+    
+    <logger name="org.hibernate" level="DEBUG"/>
+    
+    <!--logger name="org.hibernate.tool.hbm2ddl" level="DEBUG"/-->
          
     <root level="DEBUG">
         <appender-ref ref="console"/>

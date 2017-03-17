@@ -8,24 +8,23 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Access(AccessType.FIELD)
-public class Order implements Serializable {
+public class StoreOrder implements Serializable {
 
     private static final long serialVersionUID = 1l;
     
-    public Order() {
+    public StoreOrder() {
         
     }
     
-    public Order(Customer customer,String orderStatus,Date orderDate,int total){
+    public StoreOrder(Customer customer,String orderStatus,Date orderDate,int totalQuantity){
         this.customer = customer;
         this.orderStatus = orderStatus;
         this.orderDate = orderDate;
-        this.total = total;
+        this.totalQuantity = totalQuantity;
     }
     
     @Id
-    @Column(name="ORDER_ID")
+    @Column(name="STORE_ORDER_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
     
@@ -33,7 +32,7 @@ public class Order implements Serializable {
     @JoinColumn(name="CUSTOMER_ID")
     private Customer customer;
     
-    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST,mappedBy = "order")
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST,mappedBy = "storeOrder")
     private Set<OrderItem> orderItem = new HashSet<OrderItem>(0);
      
     @Column(name="ORDER_STATUS")
@@ -42,61 +41,55 @@ public class Order implements Serializable {
     @Column(name="ORDER_DATE")
     private Date orderDate;
     
-    @Column(name="TOTAL")
-    private Integer total;
+    @Column(name="TOTAL_QUANTITY")
+    private Integer totalQuantity;
 
     public Long getOrderId() {
         return orderId;
     }
 
-    public Order setOrderId(Long orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
-        return this;
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public Order setCustomer(Customer customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
-        return this;
     }
 
     public Set<OrderItem> getOrderItem() {
         return orderItem;
     }
 
-    public Order setOrderItem(Set<OrderItem> orderItem) {
+    public void setOrderItem(Set<OrderItem> orderItem) {
         this.orderItem = orderItem;
-        return this;
     }
 
     public String getOrderStatus() {
         return orderStatus;
     }
 
-    public Order setOrderStatus(String orderStatus) {
+    public void setOrderStatus(final String orderStatus) {
         this.orderStatus = orderStatus;
-        return this;
     }
 
     public Date getOrderDate() {
         return orderDate;
     }
 
-    public Order setOrderDate(Date orderDate) {
+    public void setOrderDate(final Date orderDate) {
         this.orderDate = orderDate;
-        return this;
     }
 
-    public Integer getTotal() {
-        return total;
+    public Integer getQuantity() {
+        return totalQuantity;
     }
 
-    public Order setTotal(Integer total) {
-        this.total = total;
-        return this;
+    public void setTotalQuantity(Integer totalQuantity) {
+        this.totalQuantity = totalQuantity;
     }
 
     @Override
@@ -106,7 +99,7 @@ public class Order implements Serializable {
                 append(" orderItem:").append(orderItem==null?"null":orderItem.toString()).
                 append(" orderStatus:").append(orderStatus).
                 append(" orderDate:").append(orderDate).
-                append(" TOTAL:").append(total.toString()).
+                append(" totalQuantity:").append(totalQuantity.toString()).
                 toString();
     }
 }
