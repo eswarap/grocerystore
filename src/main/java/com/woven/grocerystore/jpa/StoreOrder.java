@@ -32,8 +32,8 @@ public class StoreOrder implements Serializable {
     @JoinColumn(name="CUSTOMER_ID")
     private Customer customer;
     
-    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST,mappedBy = "storeOrder")
-    private Set<OrderItem> orderItem = new HashSet<OrderItem>(0);
+    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST,mappedBy="storeOrder")
+    private Set<OrderItem> orderItems = new HashSet<OrderItem>(0);
      
     @Column(name="ORDER_STATUS")
     private String orderStatus;
@@ -61,11 +61,11 @@ public class StoreOrder implements Serializable {
     }
 
     public Set<OrderItem> getOrderItem() {
-        return orderItem;
+        return orderItems;
     }
 
-    public void setOrderItem(Set<OrderItem> orderItem) {
-        this.orderItem = orderItem;
+    public void setOrderItem(Set<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
     public String getOrderStatus() {
@@ -96,7 +96,7 @@ public class StoreOrder implements Serializable {
     public String toString() {
         return new StringBuilder().append("ORDER_ID:").append(orderId).
                 append(" customer:").append(customer==null?"null":customer.toString()).
-                append(" orderItem:").append(orderItem==null?"null":orderItem.toString()).
+                append(" orderItems:").append(orderItems==null?"null":orderItems.toString()).
                 append(" orderStatus:").append(orderStatus).
                 append(" orderDate:").append(orderDate).
                 append(" totalQuantity:").append(totalQuantity.toString()).
