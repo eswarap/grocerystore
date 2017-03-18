@@ -35,15 +35,9 @@ public class PhoneServiceTest extends BaseIntegrationServiceTest {
     
      @Test
     public void testGetPhone() {
-        Random randomMobile = new Random();
-        Integer mobile = randomMobile.nextInt(900000000)+100000000;
-        Phone lphone = new Phone("Mobile",mobile.toString());
-        Phone actualPhone = phoneService.save(lphone);
-        Phone targetPhone = phoneService.find(actualPhone.getPhoneId());
-        Assert.assertNotNull(actualPhone);
-        Assert.assertNotNull(targetPhone);
-        Assert.assertEquals(actualPhone.getPhoneType(), targetPhone.getPhoneType());
-        Assert.assertEquals(actualPhone.getPhoneNumber(), targetPhone.getPhoneNumber());
+        Phone phone = phoneService.find(1l);
+        Assert.assertNotNull(phone);
+
     }
     
  

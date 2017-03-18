@@ -6,6 +6,7 @@ import com.woven.grocerystore.jpa.Product;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -28,9 +29,9 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
 
     @Test
     public void testCreateProduct() {
-        Category lcategory = new Category("Mobile","Handheld");
-        Category category = categoryService.save(lcategory);
-        Product product = new Product("LED Smart TV","Samsung 52 inch",category);
+        Category category = categoryService.find(1l);
+        assertNotNull(category);
+        Product product = new Product("BTWin","Singe cycle",category);
         productService.save(product);
         assertNotNull(product);
     }
@@ -44,12 +45,8 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     
     @Test
     public void testGetProduct() {
-        Category category = categoryService.find(1l);
-        Product actual = new Product("Samsung","Samsung 52 inch",category);
-        productService.save(actual);
-        Product target = productService.find(actual.getProductId());
-        assertNotNull(actual);
-        assertNotNull(target);
+        Product product = productService.find(1l);
+        assertNotNull(product);
     }
     
 }

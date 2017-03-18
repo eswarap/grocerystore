@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:tx="http://www.springframework.org/schema/tx"
-    xmlns:jee="http://www.springframework.org/schema/jee"
-xsi:schemaLocation="
-    http://www.springframework.org/schema/beans 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <!-- import the dataSource definition -->
     <import resource="classpath:config/spring/prod-config.xml"/>
@@ -46,21 +45,26 @@ xsi:schemaLocation="
             
             <property name="jpaProperties">
               <props>
-                    <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                    <prop key="hibernate.hbm2ddl.auto">update</prop>
                   <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
               </props>
             </property>
         
         </bean>
 
-        <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
+         <jdbc:initialize-database data-source="dataSource"  enabled="true" ignore-failures="DROPS">
+             <jdbc:script location="${pgsql.jdbc.initLocation}" execution="INIT"/>
+             <jdbc:script location="${pgsql.jdbc.dataLocation}" execution="INIT"/>
+         </jdbc:initialize-database>
+
+         <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
               p:entityManagerFactory-ref="entityManagerFactory"/>
 
-        <!--
-            Post-processor to perform exception translation on @Repository classes (from native
-            exceptions such as JPA PersistenceExceptions to Spring's DataAccessException hierarchy).
-        -->
+         <!--
+             Post-processor to perform exception translation on @Repository classes (from native
+             exceptions such as JPA PersistenceExceptions to Spring's DataAccessException hierarchy).
+         -->
         <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
         
     </beans>

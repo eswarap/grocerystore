@@ -34,19 +34,16 @@ public class OrderItemServiceTest extends BaseIntegrationServiceTest  {
 
     @Test
     public void testGetOrderItem() {
-        Product product = productService.find(1l);
-        StoreOrder storeOrder = orderService.find(1l);
-        OrderItem lOrderItem = new OrderItem(storeOrder,product,new BigDecimal("12323"),1);
-        OrderItem actual = orderItemService.save(lOrderItem);
-        OrderItem target = orderItemService.find(actual.getOrderItemId());
-        Assert.assertNotNull(actual);
-        Assert.assertNotNull(target);
+        OrderItem orderItem = orderItemService.find(1l);
+        Assert.assertNotNull(orderItem);
     }
 
     @Test
     public void testCreateOrderItem() {
         Product product = productService.find(1l);
         StoreOrder storeOrder = orderService.find(1l);
+        Assert.assertNotNull(product);
+        Assert.assertNotNull(storeOrder);
         OrderItem lOrderItem = new OrderItem(storeOrder,product,new BigDecimal("12323"),1);
         OrderItem actual = orderItemService.save(lOrderItem);
         

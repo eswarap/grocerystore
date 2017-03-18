@@ -16,7 +16,7 @@ public class Customer implements Serializable  {
     @Column(name="CUSTOMER_NAME")
     private String customerName;
     
-    @Column(name="EMAIL")
+    @Column(name="EMAIL",unique = true)
     private String email;
     
     @ManyToOne(fetch = FetchType.LAZY)

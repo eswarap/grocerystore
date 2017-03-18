@@ -26,12 +26,8 @@ public class OrderServiceTest extends BaseIntegrationServiceTest {
 
     @Test
     public void testGetOrder() {
-        Customer customer = customerService.find(1l);
-        StoreOrder lOrder = new StoreOrder(customer,"Initiated",new Date(),1);
-        StoreOrder actual = orderService.save(lOrder);
-        StoreOrder target = orderService.find(actual.getOrderId());
-        Assert.assertNotNull(actual);
-        Assert.assertNotNull(target);
+        StoreOrder storeOrder = orderService.find(1l);
+        Assert.assertNotNull(storeOrder);
     }
 
     @Test

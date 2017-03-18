@@ -29,11 +29,6 @@
           p:driverClassName="${pgsql.jdbc.driverClassName}" p:url="${pgsql.jdbc.url}"
           p:username="${pgsql.jdbc.username}" p:password="${pgsql.jdbc.password}"/>
 
-    <!--jdbc:initialize-database data-source="dataSource">
-        <jdbc:script location="${pgsql.jdbc.initLocation}"/>
-        <jdbc:script location="${pgsql.jdbc.dataLocation}"/>
-    </jdbc:initialize-database-->
-
 
     <beans profile="javaee">      
         <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/grocerystore"/>

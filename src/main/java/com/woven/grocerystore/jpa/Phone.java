@@ -21,7 +21,7 @@ public class Phone implements Serializable {
      @Column(name="PHONE_TYPE")
      private String phoneType;
      
-     @Column(name="PHONE_NUMBER")
+     @Column(name="PHONE_NUMBER",unique = true)
 	 private String phoneNumber;
 	      
      public Long getPhoneId() {

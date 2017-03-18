@@ -28,7 +28,6 @@ public class OrderItemServiceImpl extends GroceryService<OrderItem> implements O
     
     @Override
     public OrderItem save(OrderItem t) {
-        // TODO Auto-generated method stub
         return super.save(t);
     }
 }
