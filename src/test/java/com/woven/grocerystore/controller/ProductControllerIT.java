@@ -23,6 +23,6 @@ public class ProductControllerIT extends BaseControllerIT {
                 .andExpect(status().isOk())
                 .andExpect(view().name("productList"))
                 .andExpect(model().hasNoErrors())
-                .andDo(MockMvcResultHandlers.print());
+                .andDo(MockMvcResultHandlers.log());
     }
 }

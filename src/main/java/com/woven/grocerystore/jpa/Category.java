@@ -1,13 +1,13 @@
 package com.woven.grocerystore.jpa;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 
 /**
  * Created by eswaraprasadh on 09-03-2017.
  */
 @Entity
-@Access(AccessType.FIELD)
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1l;
@@ -54,5 +54,12 @@ public class Category implements Serializable {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    @Override
+    public String toString() {
+       return new StringBuilder().append(" categoryName =").append(categoryName)
+                                  .append(" description =").append(description)
+                                  .toString();
     }
 }

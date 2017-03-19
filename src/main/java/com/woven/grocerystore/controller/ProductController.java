@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.woven.grocerystore.dto.CategoryDto;
 import com.woven.grocerystore.dto.ProductDto;
 import com.woven.grocerystore.jpa.Product;
 import com.woven.grocerystore.service.ProductService;
@@ -45,10 +46,9 @@ public class ProductController {
     }
     
       private ProductDto convertToDto(Product product) {
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
-        LOG.info("category Id",product.getCategory().getCategoryId());
-        LOG.info("category name",productDto.getCategory().getCategoryName());
+        productDto.setCategoryDto(modelMapper.map(product.getCategory(),CategoryDto.class));
+        LOG.info(String.format("category name is %s",productDto.getCategory().getCategoryName()));
         return productDto;
     }
 }

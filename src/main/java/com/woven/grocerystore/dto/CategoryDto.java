@@ -1,7 +1,11 @@
 package com.woven.grocerystore.dto;
 
-public class CategoryDto {
+import java.io.Serializable;
+
+public class CategoryDto implements Serializable {
     
+    private static final long serialVersionUID = 1l;
+        
     private String categoryName;
     private String description;    
     
