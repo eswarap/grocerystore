@@ -1,12 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
- 
-<html>
-<head>
-    <title>Spring MVC Hello World</title>
-</head>
- 
-<body>
+<%@ include file="header.jsp" %>
+<center>
     <h2>Store products</h2>
  
     <table border="1">
@@ -26,5 +19,5 @@
         </c:forEach>
     </table>
  
-</body>
-</html>
+</center>
+<%@ include file="footer.jsp" %>
