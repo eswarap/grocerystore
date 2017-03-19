@@ -31,4 +31,5 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
         Query query = em.createQuery("from Product");
         return (Collection<Product>) query.getResultList();
     }
+
 }

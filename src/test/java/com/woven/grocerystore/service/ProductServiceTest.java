@@ -35,11 +35,12 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
         productService.save(product);
         assertNotNull(product);
     }
-
+    
     @Test
     public void testFetchAllProduct() {
         Collection<Product> products = productService.fetchAllProduct();
         assertNotNull(products);
+        LOG.info(String.format("products size %s",products.size()));
         Assert.assertTrue("product size",products.size()>=1);
     }
     
@@ -48,7 +49,7 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
         Product product = productService.find(1l);
         assertNotNull(product);
         assertNotNull(product.getCategory());
-        LOG.info("category",product.getCategory().getCategoryName());
+        LOG.info(String.format("category %s",product.getCategory().getCategoryName()));
     }
     
 }
