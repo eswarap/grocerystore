@@ -18,7 +18,7 @@
             </tr>
         </c:forEach>
         <tr>
-            <td><a href="products/add"></td>
+            <td><a href="products/add">add product</td>
         </tr>
     </table>
  
