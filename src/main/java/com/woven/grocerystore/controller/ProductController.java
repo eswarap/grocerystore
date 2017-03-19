@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,15 @@ import com.woven.grocerystore.dto.ProductDto;
 import com.woven.grocerystore.jpa.Product;
 import com.woven.grocerystore.service.ProductService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Controller
 @RequestMapping(value="/products")
 public class ProductController {
+    
+    protected final Logger LOG = LoggerFactory.getLogger(getClass());
+
     
     @Autowired
     @Qualifier("productService")
@@ -37,8 +44,11 @@ public class ProductController {
         return "productList";
     }
     
-    private ProductDto convertToDto(Product product) {
+      private ProductDto convertToDto(Product product) {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
+        LOG.info("category Id",product.getCategory().getCategoryId());
+        LOG.info("category name",productDto.getCategory().getCategoryName());
         return productDto;
     }
 }

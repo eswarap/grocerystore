@@ -47,6 +47,8 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     public void testGetProduct() {
         Product product = productService.find(1l);
         assertNotNull(product);
+        assertNotNull(product.getCategory());
+        LOG.info("category",product.getCategory().getCategoryName());
     }
     
 }

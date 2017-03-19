@@ -23,8 +23,8 @@ public class Product implements Serializable  {
     @Column(name="DESCRIPTION")
     private String description;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CATEGORY_ID")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CATEGORY_ID",nullable=false)
     private Category category;
 
     public Product(String productName,String description,Category category) {

@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+
 import com.woven.grocerystore.base.BaseControllerIT;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -20,6 +22,7 @@ public class ProductControllerIT extends BaseControllerIT {
        mockMvc.perform(get("/products/getall"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("productList"))
-                .andExpect(model().hasNoErrors());
+                .andExpect(model().hasNoErrors())
+                .andDo(MockMvcResultHandlers.print());
     }
 }
