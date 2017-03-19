@@ -4,10 +4,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,15 +57,28 @@ public class ProductController {
         return productDto;
     }
 
-    private Product convertToEntity(ProductDto productDto,int productId) {
+    private Product convertToEntity(ProductDto productDto,Long productId) {
         Product product = groceryMapper.map(productDto,Product.class);
-        product.setProductId(Long.valueOf(productId));
+        product.setProductId(productId);
         LOG.info(String.format("category name is %s",productDto.getProductName()));
         return product;
     }
     
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addProduct(@Valid @ModelAttribute("product")ProductDto product, 
+      BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        model.addAttribute("name", product.getProductName());
+        model.addAttribute("description", product.getDescription());
+
+        return "productList";
+    }
+
+    
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateProduct(@PathVariable int id, @ModelAttribute("product") ProductDto productDto) {
+    public String updateProduct(@PathVariable Long id, @ModelAttribute("product") ProductDto productDto) {
         productService.save(convertToEntity(productDto,id));
         return "productList";
     }

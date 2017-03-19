@@ -11,8 +11,8 @@ INSERT INTO public.category (category_id, category_name, description) VALUES (2,
 INSERT INTO public.product (product_id, description, product_name, category_id) VALUES (1, 'Samsung 52 inch', 'LED Smart TV', 1);
 INSERT INTO public.product (product_id, description, product_name, category_id) VALUES (2, 'Samsung S4', 'Samsung', 2);
 
-INSERT INTO public.customer (customer_id, customer_name, email, address_id, phone_id) VALUES (1, 'Arun', 'arun@nomanworld.com', null, null);
-INSERT INTO public.customer (customer_id, customer_name, email, address_id, phone_id) VALUES (2, 'Mozhi', 'mozhi@nomanworld.com', null, null);
+INSERT INTO public.customer (customer_id, customer_name, email, address_id, phone_id) VALUES (1, 'Arun', 'arun@nomanworld.com', 1, 1);
+INSERT INTO public.customer (customer_id, customer_name, email, address_id, phone_id) VALUES (2, 'Mozhi', 'mozhi@nomanworld.com', 2, 1);
 
 INSERT INTO public.storeorder (store_order_id, order_date, order_status, total_quantity, customer_id) VALUES (1, '2017-03-17 18:55:08.422000', 'Initiated', 1, 1);
 INSERT INTO public.storeorder (store_order_id, order_date, order_status, total_quantity, customer_id) VALUES (2, '2017-03-17 18:55:10.000000', 'Initiated', 1, 2);

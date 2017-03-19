@@ -17,6 +17,9 @@
                 <td>${product.category.description}</td>
             </tr>
         </c:forEach>
+        <tr>
+            <td><a href="products/add"></td>
+        </tr>
     </table>
  
 </center>

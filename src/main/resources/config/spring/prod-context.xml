@@ -17,7 +17,7 @@
     
     <tx:annotation-driven />
      
-    <context:component-scan base-package="com.woven.grocerystore.service" />
+    <context:component-scan base-package="com.woven.grocerystore" />
     
      <beans profile="jpa-pgsql">
         <!--
@@ -45,7 +45,7 @@
             
             <property name="jpaProperties">
               <props>
-                    <prop key="hibernate.hbm2ddl.auto">validate</prop>
+                    <prop key="hibernate.hbm2ddl.auto">update</prop>
                   <prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
               </props>
             </property>
