@@ -3,10 +3,8 @@ package com.woven.grocerystore.service;
 import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.jpa.Product;
-
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.Ignore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 

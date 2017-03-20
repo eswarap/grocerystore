@@ -1,17 +1,15 @@
 package com.woven.grocerystore.service;
 
-import java.util.Collection;
-import java.util.Date;
-
+import com.woven.grocerystore.base.BaseIntegrationServiceTest;
+import com.woven.grocerystore.jpa.Customer;
+import com.woven.grocerystore.jpa.StoreOrder;
 import org.junit.Assert;
 import org.junit.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.woven.grocerystore.base.BaseIntegrationServiceTest;
-import com.woven.grocerystore.jpa.StoreOrder;
-import com.woven.grocerystore.jpa.Customer;
+import java.util.Collection;
+import java.util.Date;
 
 public class OrderServiceTest extends BaseIntegrationServiceTest {
     

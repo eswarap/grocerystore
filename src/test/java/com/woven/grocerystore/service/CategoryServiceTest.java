@@ -2,7 +2,6 @@ package com.woven.grocerystore.service;
 
 import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.Category;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,11 +2,11 @@ package com.woven.grocerystore.base;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
-
 import org.mockito.MockitoAnnotations;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -28,6 +28,8 @@ public abstract class BaseControllerIT {
     protected WebApplicationContext wac;
     
     protected MockMvc mockMvc;
+
+    protected final Logger LOG = LoggerFactory.getLogger(getClass());
  
     @Before
     public void setup() {

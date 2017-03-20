@@ -56,13 +56,6 @@ public class ProductController {
         LOG.info(String.format("category name is %s",productDto.getCategory().getCategoryName()));
         return productDto;
     }
-
-    private Product convertToEntity(ProductDto productDto,Long productId) {
-        Product product = groceryMapper.map(productDto,Product.class);
-        product.setProductId(productId);
-        LOG.info(String.format("category name is %s",productDto.getProductName()));
-        return product;
-    }
     
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addProduct(@Valid @ModelAttribute("product")ProductDto product, 
@@ -77,9 +70,9 @@ public class ProductController {
     }
 
     
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateProduct(@PathVariable Long id, @ModelAttribute("product") ProductDto productDto) {
-        productService.save(convertToEntity(productDto,id));
+    @RequestMapping(value = "/edit/{prodId}/{catId}", method = RequestMethod.POST)
+    public String updateProduct(@PathVariable Long prodId, @PathVariable Long catId,@ModelAttribute("product") ProductDto productDto) {
+        productService.update(productDto,prodId,catId);
         return "productList";
     }
 }

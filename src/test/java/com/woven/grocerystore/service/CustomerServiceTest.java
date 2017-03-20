@@ -1,14 +1,13 @@
 package com.woven.grocerystore.service;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.Address;
 import com.woven.grocerystore.jpa.Customer;
 import com.woven.grocerystore.jpa.Phone;
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.Collection;
 

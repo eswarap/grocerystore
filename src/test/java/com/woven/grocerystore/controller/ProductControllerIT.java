@@ -1,41 +1,46 @@
 package com.woven.grocerystore.controller;
 
 
-import org.junit.Test;
-import org.junit.Ignore;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-
 import com.woven.grocerystore.base.BaseControllerIT;
 import com.woven.grocerystore.dto.ProductDto;
+import com.woven.grocerystore.dto.CategoryDto;
+import org.junit.Test;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class ProductControllerIT extends BaseControllerIT {
-    
-    protected final Logger LOG = LoggerFactory.getLogger(getClass());
-    
-     @Test
-     public void testGetAllProducts() throws Exception{
-         
-       mockMvc.perform(get("/products/getall"))
+
+    @Test
+    public void testGetAllProducts() throws Exception {
+        super.mockMvc.perform(get("/products/getall"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("productList"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }
-    
+
     @Test
-    public void testUpdateProduct() throws Exception{
-       
-       ProductDto productDto = new ProductDto();  
-       productDto.setProductName("Philips");
-       productDto.setDescription("LED 45 Inch");
-       
-       mockMvc.perform(post("/products/edit",1l).requestAttr("product",productDto))
+    public void testAddProduct() throws Exception {
+        ProductDto productDto = new ProductDto();
+        productDto.setProductName("Philips");
+        productDto.setDescription("LED 45 Inch");
+        super.mockMvc.perform(post("/products/add").requestAttr("product", productDto))
+                .andExpect(status().isOk())
+                .andExpect(view().name("productList"))
+                .andExpect(model().hasNoErrors())
+                .andDo(MockMvcResultHandlers.log());
+    }
+
+    @Test
+    public void testUpdateProduct() throws Exception {
+        ProductDto productDto = new ProductDto();
+        productDto.setProductName("Philips");
+        productDto.setDescription("LED 45 Inch");
+
+        super.mockMvc.perform(post("/products/edit/{prodId}/{catId}", 1l,1l).sessionAttr("product", productDto))
                 .andExpect(status().isOk())
                 .andExpect(view().name("productList"))
                 .andExpect(model().hasNoErrors())

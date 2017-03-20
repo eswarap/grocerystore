@@ -1,5 +1,6 @@
 package com.woven.grocerystore.service;
 
+import com.woven.grocerystore.dto.ProductDto;
 import com.woven.grocerystore.jpa.Product;
 
 import java.util.Collection;
@@ -9,4 +10,5 @@ import java.util.Collection;
  */
 public interface ProductService extends GenericGroceryService<Product>{
     Collection<Product> fetchAllProduct();
+    boolean update(ProductDto productDto, Long prodId, Long categoryId);
 }

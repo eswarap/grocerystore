@@ -1,43 +1,22 @@
 package com.woven.grocerystore.controller;
 
 
-import org.junit.Before;
+import com.woven.grocerystore.base.BaseControllerIT;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-public class HelloControllerIT {
-    
-    protected final Logger LOG = LoggerFactory.getLogger(getClass());
- 
-    @InjectMocks
-    private HelloController helloController;
- 
-    private MockMvc mockMvc;
- 
-    @Before
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(helloController).build();
-    }
-    
+public class HelloControllerIT extends BaseControllerIT {
+
      @Test
      public void testHello() throws Exception{
          
-       mockMvc.perform(get("/"))
+       super. mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("hello"));
 

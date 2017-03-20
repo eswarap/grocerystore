@@ -1,15 +1,14 @@
 package com.woven.grocerystore.service;
 
-import java.util.Collection;
-import java.util.Random;
-
+import com.woven.grocerystore.base.BaseIntegrationServiceTest;
+import com.woven.grocerystore.jpa.Phone;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.woven.grocerystore.base.BaseIntegrationServiceTest;
-import com.woven.grocerystore.jpa.Phone;
+import java.util.Collection;
+import java.util.Random;
 
 public class PhoneServiceTest extends BaseIntegrationServiceTest {
     
