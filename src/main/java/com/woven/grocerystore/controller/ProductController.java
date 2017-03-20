@@ -57,18 +57,23 @@ public class ProductController {
         return productDto;
     }
     
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addProduct(@Valid @ModelAttribute("product")ProductDto product, 
-      BindingResult result, ModelMap model) {
+    @RequestMapping(value = "/showAdd", method = RequestMethod.GET)
+    public String showAddPage(BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
-        model.addAttribute("name", product.getProductName());
-        model.addAttribute("description", product.getDescription());
-
-        return "productList";
+     
+        return "addProduct";
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addProduct(BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+     
+        return "productList";
+    }
     
     @RequestMapping(value = "/edit/{prodId}/{catId}", method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long prodId, @PathVariable Long catId,@ModelAttribute("product") ProductDto productDto) {

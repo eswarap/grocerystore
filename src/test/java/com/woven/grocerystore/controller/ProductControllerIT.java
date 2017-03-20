@@ -27,7 +27,7 @@ public class ProductControllerIT extends BaseControllerIT {
         ProductDto productDto = new ProductDto();
         productDto.setProductName("Philips");
         productDto.setDescription("LED 45 Inch");
-        super.mockMvc.perform(post("/products/add").requestAttr("product", productDto))
+        super.mockMvc.perform(post("/products/addProduct").requestAttr("product", productDto))
                 .andExpect(status().isOk())
                 .andExpect(view().name("productList"))
                 .andExpect(model().hasNoErrors())

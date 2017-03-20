@@ -17,10 +17,10 @@
                 <td>${product.category.description}</td>
             </tr>
         </c:forEach>
-        <tr>
-            <td><a href="products/add">add product</td>
-        </tr>
     </table>
- 
+    
+     <tr>
+            <td><a href="add">add product</td>
+        </tr>
 </center>
 <%@ include file="footer.jsp" %>
