@@ -1,8 +1,10 @@
 package com.woven.grocerystore.service;
 
 import com.woven.grocerystore.base.BaseIntegrationServiceTest;
+import com.woven.grocerystore.dto.ProductDto;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.jpa.Product;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,15 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
         assertNotNull(product);
         assertNotNull(product.getCategory());
         LOG.info(String.format("category %s",product.getCategory().getCategoryName()));
+    }
+    
+     @Test
+    public void testUpdateProduct() {
+        ProductDto productDto = new ProductDto();
+        productDto.setProductName("PROD");
+        productDto.setProductName("description");
+        boolean updated = productService.update(productDto,1l,1l);
+        Assert.assertEquals(updated,true);
     }
     
 }

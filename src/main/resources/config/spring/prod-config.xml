@@ -29,10 +29,10 @@
           p:driverClassName="${pgsql.jdbc.driverClassName}" p:url="${pgsql.jdbc.url}"
           p:username="${pgsql.jdbc.username}" p:password="${pgsql.jdbc.password}"/>
 
-    <!--jdbc:initialize-database data-source="dataSource"  enabled="true" ignore-failures="DROPS">
+    <jdbc:initialize-database data-source="dataSource"  enabled="true" ignore-failures="DROPS">
         <jdbc:script location="${pgsql.jdbc.initLocation}" execution="INIT"/>
         <jdbc:script location="${pgsql.jdbc.dataLocation}" execution="INIT"/>
-    </jdbc:initialize-database-->
+    </jdbc:initialize-database>
 
 
     <beans profile="javaee">      

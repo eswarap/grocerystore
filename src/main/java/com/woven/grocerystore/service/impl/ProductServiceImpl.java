@@ -52,6 +52,9 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
         product = groceryMapper.map(productDto,Product.class);
         Category category = categoryService.find(categoryId);
         product.setCategory(category);
+        product.setProductId(productId);
+        System.out.println("product id "+product.getProductId());
+        System.out.println("category id "+product.getCategory());
         em.merge(product);
         return true;
     }

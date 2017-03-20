@@ -9,6 +9,8 @@ import java.util.Collection;
  * Created by eswaraprasadh on 09-03-2017.
  */
 public interface ProductService extends GenericGroceryService<Product>{
+    
     Collection<Product> fetchAllProduct();
-    boolean update(ProductDto productDto, Long prodId, Long categoryId);
+    
+    boolean update(final ProductDto productDto,final Long prodId,final Long categoryId);
 }
