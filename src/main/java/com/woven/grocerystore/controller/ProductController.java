@@ -37,47 +37,25 @@ public class ProductController {
     @Qualifier("productService")
     ProductService productService;
     
-    @Autowired
-    @Qualifier("groceryMapper")
-    private GroceryMapper groceryMapper;
 
     @RequestMapping(value = "/getall", method = RequestMethod.GET)
-    public String getAllProducts(Model model)
+    public String list(Model model)
     {
-        Collection<Product> products =  productService.fetchAllProduct(); 
-        List<ProductDto> productDtoList = products.stream().filter(product ->product!=null).map(product -> convertToDto(product)).collect(Collectors.toList());
+        List<ProductDto> productDtoList = productService.list(); 
         model.addAttribute("products",productDtoList);
         return "productList";
     }
-    
-    private ProductDto convertToDto(Product product) {
-        ProductDto productDto = groceryMapper.map(product, ProductDto.class);
-        productDto.setCategoryDto(groceryMapper.map(product.getCategory(),CategoryDto.class));
-        LOG.info(String.format("category name is %s",productDto.getCategory().getCategoryName()));
-        return productDto;
-    }
-    
-    @RequestMapping(value = "/showAdd", method = RequestMethod.GET)
-    public String showAddPage(BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error";
-        }
-     
-        return "addProduct";
-    }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addProduct(BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error";
-        }
-     
-        return "productList";
-    }
+	@RequestMapping(value= {"/add","edit"}, method = RequestMethod.POST)
+	public String add(@ModelAttribute("product") ProductDto productDto){
+		this.productService.update(productDto);
+		return "redirect:/productList";
+		
+	}
     
-    @RequestMapping(value = "/edit/{prodId}/{catId}", method = RequestMethod.POST)
-    public String updateProduct(@PathVariable Long prodId, @PathVariable Long catId,@ModelAttribute("product") ProductDto productDto) {
-        productService.update(productDto,prodId,catId);
-        return "productList";
-    }
+  /*  @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String update(@ModelAttribute("product") ProductDto productDto) {
+        productService.update(productDto);
+		return "redirect:/productList";
+    }*/
 }

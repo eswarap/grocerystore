@@ -77,7 +77,3 @@ CREATE TABLE order_orderitem
     CONSTRAINT order_orderitem_pkey PRIMARY KEY (order_order_id, orderitem_orderitem_id)
 );
 CREATE UNIQUE INDEX uk_orderitem ON order_orderitem (orderitem_orderitem_id);
-
-
-
-DROP sequence IF EXISTS hibernate_sequence CASCADE;

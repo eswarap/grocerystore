@@ -1,19 +1,25 @@
 package com.woven.grocerystore.service.impl;
 
 import com.woven.grocerystore.dto.ProductDto;
-import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.jpa.Product;
 import com.woven.grocerystore.mapper.GroceryMapper;
 import com.woven.grocerystore.service.CategoryService;
 import com.woven.grocerystore.service.GroceryService;
 import com.woven.grocerystore.service.ProductService;
+
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+import java.lang.reflect.Type;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by eswaraprasadh on 09-03-2017.
@@ -41,21 +47,21 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
     }
 
     @Override
-    public Collection<Product> fetchAllProduct() {
-        Query query = em.createQuery("from Product");
-        return (Collection<Product>) query.getResultList();
+    public List<ProductDto> list() {
+        TypedQuery<Product> query = em.createQuery("from Product",Product.class);
+        List<Product> entityList = query.getResultList();
+        Type listType = new TypeToken<List<ProductDto>>() {}.getType();
+        List<ProductDto> dtoList = groceryMapper.map(entityList, listType);
+        return dtoList;
     }
 
-    @Override
-    public boolean update(ProductDto productDto, Long productId, Long categoryId) {
-        Product product = super.find(productId);
-        product = groceryMapper.map(productDto,Product.class);
-        Category category = categoryService.find(categoryId);
-        product.setCategory(category);
-        product.setProductId(productId);
-        System.out.println("product id "+product.getProductId());
-        System.out.println("category id "+product.getCategory());
-        em.merge(product);
+    public boolean update(ProductDto productDto) {
+        Product product = groceryMapper.map(productDto,Product.class);
+        System.out.println("##########productDto "+productDto.getProductName());
+        System.out.println("##########product "+product.getProductName());
+        System.out.println("##########product "+product.getCategory().getCategoryName());
+        super.save(product);
+        
         return true;
     }
 

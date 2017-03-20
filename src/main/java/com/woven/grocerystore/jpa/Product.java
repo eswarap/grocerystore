@@ -1,6 +1,7 @@
 package com.woven.grocerystore.jpa;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 
 @Entity
@@ -63,5 +64,13 @@ public class Product implements Serializable  {
     
     public void setProductId(Long productId) {
         this.productId = productId;
+    }
+    
+    @Override
+    public String toString() {
+          return new StringBuilder().append(" productId : ").append(productId)
+                                   .append(" description: ").append(description)
+                                   .append(" category: ").append(category==null?"null":category.toString())
+                                   .toString();
     }
 }

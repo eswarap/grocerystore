@@ -1,6 +1,7 @@
 package com.woven.grocerystore.service;
 
 import com.woven.grocerystore.base.BaseIntegrationServiceTest;
+import com.woven.grocerystore.dto.CategoryDto;
 import com.woven.grocerystore.dto.ProductDto;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.jpa.Product;
@@ -10,7 +11,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import java.util.Collection;
+import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -38,7 +39,7 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     
     @Test
     public void testFetchAllProduct() {
-        Collection<Product> products = productService.fetchAllProduct();
+        List<ProductDto> products = productService.list();
         assertNotNull(products);
         LOG.info(String.format("products size %s",products.size()));
         Assert.assertTrue("product size",products.size()>=1);
@@ -55,10 +56,21 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
      @Test
     public void testUpdateProduct() {
         ProductDto productDto = new ProductDto();
+        productDto.setProductId(1l);
         productDto.setProductName("PROD");
-        productDto.setProductName("description");
-        boolean updated = productService.update(productDto,1l,1l);
+        productDto.setDescription("description");
+        CategoryDto categoryDto = new CategoryDto();
+        categoryDto.setCategoryId(1l);
+        categoryDto.setCategoryName("category");
+        categoryDto.setDescription("description");
+        productDto.setCategoryDto(categoryDto);
+        boolean updated = productService.update(productDto);
         Assert.assertEquals(updated,true);
+        Product product = productService.find(1l);
+        assertNotNull(product);
+        System.out.println(String.format("product %s",product));
+        Assert.assertEquals("PROD",product.getProductName());
+        Assert.assertEquals("description",product.getDescription()); 
     }
     
 }
