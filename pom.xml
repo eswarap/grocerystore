@@ -20,6 +20,7 @@
 		<postgresql.version>9.4.1211</postgresql.version>
 		<junit.version>4.12</junit.version>
 		<spring-data-jpa.version>1.11.1.RELEASE</spring-data-jpa.version>
+		<jackson.version>2.4.4</jackson.version>
 		 <skipTests>false</skipTests>
         <skipITs>${skipTests}</skipITs>
         <skipUTs>${skipTests}</skipUTs>
@@ -149,6 +150,11 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+          </dependency>
 		</dependencies>
 	</dependencyManagement>
     <dependencies>
@@ -254,6 +260,16 @@
          <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.5.0</version>
         </dependency>
     </dependencies>
     <build>
