@@ -30,7 +30,7 @@
       }
     }
   },
-  "defaultEnv": "wksp-eylj",
+  "defaultEnv": "wksp-grocerystore",
   "projects": [
     {
       "links": [],
@@ -55,7 +55,7 @@
       ]
     }
   ],
-  "name": "wksp-eylj",
+  "name": "wksp-grocerystore",
   "commands": [
     {
       "commandLine": "mysql -u $MYSQL_USER -p$MYSQL_PASSWORD -e 'show databases;'",
