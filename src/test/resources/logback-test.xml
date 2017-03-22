@@ -17,8 +17,8 @@
     <logger name="com.woven.grocerystore" level="INFO"/>
     <logger name="org.hibernate.type" level="DEBUG" />
     <logger name="org.hibernate" level="INFO"/>
-    <logger name="org.springframework" level="INFO"/>
-    <logger name="org.modelmapper" level="INFO"/>
+    <logger name="org.springframework" level="DEBUG"/>
+    <logger name="org.modelmapper" level="DEBUG"/>
     
     <root level="DEBUG">
         <appender-ref ref="console"/>
