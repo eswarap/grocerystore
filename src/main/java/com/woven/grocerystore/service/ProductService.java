@@ -13,4 +13,6 @@ public interface ProductService extends GenericGroceryService<Product>{
     List<ProductDto> list();
     
     boolean update(final ProductDto productDto);
+    
+    boolean save(final ProductDto productDto);
 }

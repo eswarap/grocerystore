@@ -53,15 +53,15 @@ public class ProductController {
         return "productList";
     }
 
-	@RequestMapping(value= {"add"}, method = RequestMethod.POST)
-	public String add(@ModelAttribute("product") ProductDto productDto,BindingResult result,
+    @RequestMapping(value= {"add"}, method = RequestMethod.POST)
+    public String add(@ModelAttribute("product") ProductDto productDto,BindingResult result,
                         ModelMap model){
-	    System.out.println("####product Id = "+productDto.getProductName());
-	    System.out.println("####category Id = "+productDto.getCategory().getCategoryId());
-		this.productService.save(productDto);
-		return "productList";
-		
-	}
+        System.out.println("####product Id = "+productDto.getProductName());
+        System.out.println("####category Id = "+productDto.getCategory().getCategoryId());
+    	this.productService.save(productDto);
+    	return "productList";
+    	
+    }
     
    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String update(@ModelAttribute("product") ProductDto productDto) {
