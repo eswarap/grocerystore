@@ -18,7 +18,7 @@ public class CategoryServiceImpl extends GroceryService<Category> implements Cat
 
 
     @Override
-    public Collection<Category> fetchAllCategory() {
+    public Collection<Category> list() {
         Query query = this.em.createQuery("from Category");
         return (Collection<Category>) query.getResultList();
     }

@@ -2,7 +2,7 @@
 <center>
     <h2>Store products</h2>
     <div>
-        <form:form method="POST" action="/products/add" modelAttribute="product">
+        <form:form method="POST" action="add" modelAttribute="product">
              <table>
                 <tr>
                     <td><form:label path="productName">Product Name</form:label></td>
@@ -12,13 +12,12 @@
                     <td><form:label path="description">Description</form:label></td>
                     <td><form:input path="description"/></td>
                 </tr>
-                 <tr>
-                    <td><form:select multiple="single" path="category[y.count-1].X" >
-                           <form:option value="--selected--" />
-                           <form:options items="${Y}"  itemValue="id" itemLabel="categoryName" />
+                <tr>
+                    <td>Cateogry:</td>
+                    <td><form:select path="category.categoryId">
+                            <form:options  items="${categoryList}" itemValue="categoryId" itemLabel="categoryName"/>
                         </form:select>
                     </td>
-                    <td><form:input path="description"/></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit"/></td>
@@ -40,7 +39,7 @@
                 <td>${product.description}</td>
                 <td>${product.category.categoryName}</td>
                 <td>${product.category.description}</td>
-                <td><a href="<c:url value='/edit/${person.id}' />" >Edit</a></td>
+                <td><a href="<c:url value='/edit/${product.productId}' />" >Edit</a></td>
             </tr>
         </c:forEach>
     </table>

@@ -33,7 +33,7 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
 
     @Test
     public void testFetchAllCategory() {
-        Collection<Category> categories = categoryService.fetchAllCategory();
+        Collection<Category> categories = categoryService.list();
         Assert.assertNotNull(categories);
         System.out.println("categories size "+categories.size());
     }

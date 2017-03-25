@@ -63,7 +63,7 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
         categoryDto.setCategoryId(1l);
         categoryDto.setCategoryName("category");
         categoryDto.setDescription("description");
-        productDto.setCategoryDto(categoryDto);
+        productDto.setCategory(categoryDto);
         boolean updated = productService.update(productDto);
         Assert.assertEquals(updated,true);
         Product product = productService.find(1l);

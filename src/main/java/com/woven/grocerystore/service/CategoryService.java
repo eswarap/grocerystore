@@ -8,5 +8,5 @@ import java.util.Collection;
  * Created by eswaraprasadh on 09-03-2017.
  */
 public interface CategoryService extends GenericGroceryService<Category> {
-    Collection<Category> fetchAllCategory();
+    Collection<Category> list();
 }

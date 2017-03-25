@@ -31,7 +31,7 @@ public class ProductDto implements Serializable {
         return productName;
     }
     
-    public void setCategoryDto(CategoryDto categoryDto) {
+    public void setCategory(CategoryDto categoryDto) {
         this.category = categoryDto;
     }
 
