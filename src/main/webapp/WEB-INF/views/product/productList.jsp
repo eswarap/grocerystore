@@ -1,6 +1,7 @@
 <%@ include file="../header.jsp" %>
 <c:url var="editUrl" value="/products/edit"/>
-<c:url var="deleteUrl" value="/resources/delete.jpg" />
+<c:url var="deleteUrl" value="/products/delete"/>
+<c:url var="deleteImg" value="/resources/delete.jpg" />
 <center>
     <h2>Store products</h2>
     <div>
@@ -18,7 +19,7 @@
                 <td>${product.description}</td>
                 <td>${product.category.categoryName}</td>
                 <td>${product.category.description}</td>
-                <td><div class="portrait"><img style="max-width:100%;height:auto;" src="${deleteUrl}"/></div></td>
+                <td><a href="${deleteUrl}/${product.productId}" class="portrait"><img src="${deleteImg}"/></a></td>
             </tr>
         </c:forEach>
     </table>

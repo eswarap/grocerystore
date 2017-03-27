@@ -1,12 +1,12 @@
 @CHARSET "UTF-8";
 
 img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 30%;
+    max-height: 30%;
 }
 
 .portrait {
-    height: 80px;
+    height: 30px;
     width: 30px;
 }
 
