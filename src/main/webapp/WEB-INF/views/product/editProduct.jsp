@@ -1,8 +1,8 @@
-<%@ include file="header.jsp" %>
-<c:url var="addUrl" value="/products/add"/>
+<%@ include file="../header.jsp" %>
+<c:url var="updateUrl" value="/products/update"/>
 <center>
- <h3>Welcome, Enter The Product Details</h3>
-        <form:form method="POST" action="${addUrl}" modelAttribute="product">
+   <div id="productForm" >	
+		 <form:form method="POST" action="${updateUrl}" modelAttribute="product">
              <table>
                 <tr>
                     <td><form:label path="productName">Product Name</form:label></td>
@@ -24,5 +24,6 @@
                 </tr>
             </table>
         </form:form>
+	</div>			
 </center>
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>

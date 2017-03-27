@@ -1,4 +1,4 @@
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 <c:url var="editUrl" value="/products/edit"/>
 <center>
     <h2>Store products</h2>
@@ -21,4 +21,4 @@
     </table>
     </div>
 </center>
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>
