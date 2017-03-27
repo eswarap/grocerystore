@@ -4,3 +4,6 @@
 <html>
   <head><title>Hello :: Spring Application</title></head>
   <body> 
+  <div>
+      <%@ include file="menu.jsp" %>
+</div>

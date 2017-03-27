@@ -1,36 +1,29 @@
 <%@ include file="header.jsp" %>
+<c:url var="updateUrl" value="/products/update"/>
 <center>
-<div id="productForm" >	
-				<form:form modelAttribute="productModel" action="product" method="POST">
-					<table id="productTable">
-						<tr>
-							<td><form:label	for="name" path="name" cssErrorClass="error">Name</form:label></td>
-							<td><form:input path="name" /></td>
-							<td><form:errors path="name" /></td>
-						</tr>
-						<tr>	
-							<td><form:label for="description" path="description" cssErrorClass="error">Description</form:label></td>
-							<td><form:input path="description" /></td>
-							<td><form:errors path="description" /></td>
-						</tr>
-						<tr>	
-							<td><form:label for="company" path="company" cssErrorClass="error">Company</form:label></td>
-							<td><form:input path="company" /></td>
-							<td><form:errors path="company" /></td>
-						</tr>
-						<tr>
-							<td>
-								<p>	
-									<form:hidden path="id" id="id" />
-									<input id="save" type="submit" value="Save" />
-								</p>
-							</td>
-							<td></td>
-							<td></td>
-						</tr>
-						</table>
-				</form:form>
-			</div>
-			
+   <div id="productForm" >	
+		 <form:form method="POST" action="${updateUrl}" modelAttribute="product">
+             <table>
+                <tr>
+                    <td><form:label path="productName">Product Name</form:label></td>
+                    <td><form:input path="productName"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="description">Description</form:label></td>
+                    <td><form:input path="description"/></td>
+                </tr>
+                <tr>
+                    <td>Cateogry:</td>
+                    <td><form:select path="category.categoryId">
+                            <form:options  items="${categoryList}" itemValue="categoryId" itemLabel="categoryName"/>
+                        </form:select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
+	</div>			
 </center>
 <%@ include file="footer.jsp" %>
