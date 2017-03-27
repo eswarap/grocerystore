@@ -7,4 +7,4 @@
 <a href="${enterPUrl}">Add Product </a><br/>
 <a href="${listCUrl}">Category List</a><br/>
 <a href="${enterCUrl}">Add Category </a>
-<div align="center">
+</div>

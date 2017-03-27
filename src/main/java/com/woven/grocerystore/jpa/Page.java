@@ -7,7 +7,7 @@ public class Page {
     
     public Page() {
         this.first = 1;
-        this.max = 5;
+        this.max = 50;
     }
     public Page(int first,int max) {
         this.first = first;
