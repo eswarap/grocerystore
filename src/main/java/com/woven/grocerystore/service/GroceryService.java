@@ -38,4 +38,11 @@ public abstract class GroceryService<T> implements GenericGroceryService<T> {
         return em.find(type,id);
     }
     
+    @Override
+    public boolean delete(Long id) {
+        T t = find(id);
+        em.remove(t);
+        return true;
+    }
+    
 }

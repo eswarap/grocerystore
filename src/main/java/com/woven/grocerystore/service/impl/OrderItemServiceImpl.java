@@ -35,4 +35,9 @@ public class OrderItemServiceImpl extends GroceryService<OrderItem> implements O
     public OrderItem update(OrderItem t) {
         return super.update(t);
     }
+    
+    @Override
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }
 }

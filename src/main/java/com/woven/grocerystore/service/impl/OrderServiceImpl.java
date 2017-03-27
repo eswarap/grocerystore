@@ -35,5 +35,9 @@ public class OrderServiceImpl  extends GroceryService<StoreOrder>  implements Or
         Query query = this.em.createQuery("from StoreOrder");
         return (Collection<StoreOrder>) query.getResultList();
     }
-    
+
+    @Override
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }    
 }

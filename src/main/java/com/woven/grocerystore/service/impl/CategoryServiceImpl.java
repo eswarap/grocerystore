@@ -13,9 +13,9 @@ import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.dto.CategoryDto;
 import com.woven.grocerystore.service.CategoryService;
 import com.woven.grocerystore.service.GroceryService;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import javax.persistence.TypedQuery;
 
@@ -69,4 +69,8 @@ public class CategoryServiceImpl extends GroceryService<Category> implements Cat
         
         return true;
     }
-}
+
+    @Override
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }}

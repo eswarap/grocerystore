@@ -34,4 +34,9 @@ public class PhoneServiceImpl extends GroceryService<Phone> implements PhoneServ
         return (Collection<Phone>) query.getResultList();
     }
     
+    @Override
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }    
+    
 }

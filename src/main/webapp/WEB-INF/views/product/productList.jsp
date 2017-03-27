@@ -19,7 +19,12 @@
                 <td>${product.description}</td>
                 <td>${product.category.categoryName}</td>
                 <td>${product.category.description}</td>
-                <td><a href="${deleteUrl}/${product.productId}" class="portrait"><img src="${deleteImg}"/></a></td>
+                <td class="delete">
+                    <form id="deleteProduct" action="${deleteUrl}" method="POST">
+                        <input id="productId" name="productId" type="hidden" value="${product.productId}"/>
+                        <input type="image" src="${deleteImg}"" value="delete" onClick="return confirm('sure?')"/>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
     </table>

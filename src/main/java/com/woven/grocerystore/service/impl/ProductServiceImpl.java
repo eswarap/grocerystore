@@ -82,5 +82,10 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
         
         return true;
     }
+    
+    @Override
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }    
 
 }

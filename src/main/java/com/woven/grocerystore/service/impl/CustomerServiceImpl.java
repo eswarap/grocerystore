@@ -34,4 +34,10 @@ public class CustomerServiceImpl extends GroceryService<Customer> implements Cus
     public Customer find(Long id) {
         return super.find(id);
     }
+    
+    @Override
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }
+
 }
