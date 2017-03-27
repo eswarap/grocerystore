@@ -1,6 +1,15 @@
 package com.woven.grocerystore.service.impl;
 
+import com.woven.grocerystore.mapper.GroceryMapper;
+
+import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.woven.grocerystore.jpa.Category;
+import com.woven.grocerystore.dto.CategoryDto;
 import com.woven.grocerystore.service.CategoryService;
 import com.woven.grocerystore.service.GroceryService;
 import org.springframework.stereotype.Service;
@@ -8,6 +17,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
 import java.util.Collection;
+import javax.persistence.TypedQuery;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 /**
  * Created by eswaraprasadh on 09-03-2017.
@@ -16,11 +29,17 @@ import java.util.Collection;
 @Transactional
 public class CategoryServiceImpl extends GroceryService<Category> implements CategoryService {
 
+    @Autowired
+    @Qualifier("groceryMapper")
+    private GroceryMapper groceryMapper;
 
     @Override
-    public Collection<Category> list() {
-        Query query = this.em.createQuery("from Category");
-        return (Collection<Category>) query.getResultList();
+    public List<CategoryDto> list() {
+        TypedQuery<Category> query = em.createQuery("from Category",Category.class);
+        List<Category> entityList = query.getResultList();
+        Type listType = new TypeToken<List<CategoryDto>>() {}.getType();
+        List<CategoryDto> dtoList = groceryMapper.map(entityList, listType);
+        return dtoList;
     }
 
     @Override
@@ -31,5 +50,21 @@ public class CategoryServiceImpl extends GroceryService<Category> implements Cat
     @Override
     public Category find(Long id) {
         return super.find(id);
+    }
+    
+    public boolean save(CategoryDto categoryDto) {
+         
+        Category category = groceryMapper.map(categoryDto,Category.class);
+        super.save(category);
+        
+        return true;
+    }
+    
+    public boolean update(CategoryDto categoryDto) {
+        
+        Category category = groceryMapper.map(categoryDto,Category.class);
+        super.save(category);
+        
+        return true;
     }
 }
