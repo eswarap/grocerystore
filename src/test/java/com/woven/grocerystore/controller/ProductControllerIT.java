@@ -16,7 +16,7 @@ public class ProductControllerIT extends BaseControllerIT {
     public void testGetAllProducts() throws Exception {
         super.mockMvc.perform(get("/products/getall"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("productList"))
+                .andExpect(view().name("product/productList"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }

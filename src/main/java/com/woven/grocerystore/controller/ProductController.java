@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.woven.grocerystore.jpa.Page;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.jpa.Product;
 import com.woven.grocerystore.mapper.GroceryMapper;
@@ -68,7 +69,7 @@ public class ProductController {
         CategoryDto category = new CategoryDto();
         productDto.setCategory(category);
         model.addAttribute("product",productDto);
-        Collection<Category> categoryList = categoryService.list();
+        List<CategoryDto> categoryList = categoryService.list(new Page());
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("category",category);
         
@@ -82,7 +83,7 @@ public class ProductController {
         Category category = categoryService.find(product.getCategory().getCategoryId());
         CategoryDto categoryDto = groceryMapper.map(category,CategoryDto.class);
         model.addAttribute("product",productDto);
-        Collection<Category> categoryList = categoryService.list();
+        List<CategoryDto> categoryList = categoryService.list(new Page());
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("category",categoryDto);
         

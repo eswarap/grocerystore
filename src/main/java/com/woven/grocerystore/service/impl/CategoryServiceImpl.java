@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.woven.grocerystore.jpa.Page;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.dto.CategoryDto;
 import com.woven.grocerystore.service.CategoryService;
@@ -15,8 +16,7 @@ import com.woven.grocerystore.service.GroceryService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Query;
-import java.util.Collection;
+
 import javax.persistence.TypedQuery;
 
 import java.lang.reflect.Type;
@@ -34,8 +34,10 @@ public class CategoryServiceImpl extends GroceryService<Category> implements Cat
     private GroceryMapper groceryMapper;
 
     @Override
-    public List<CategoryDto> list() {
+    public List<CategoryDto> list(Page page) {
         TypedQuery<Category> query = em.createQuery("from Category",Category.class);
+        query.setMaxResults(page.getMax());
+        query.setFirstResult(page.getFirst()-1);
         List<Category> entityList = query.getResultList();
         Type listType = new TypeToken<List<CategoryDto>>() {}.getType();
         List<CategoryDto> dtoList = groceryMapper.map(entityList, listType);

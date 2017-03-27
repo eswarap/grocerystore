@@ -1,13 +1,16 @@
 package com.woven.grocerystore.service;
 
 import com.woven.grocerystore.base.BaseIntegrationServiceTest;
+import com.woven.grocerystore.jpa.Page;
 import com.woven.grocerystore.jpa.Category;
+import com.woven.grocerystore.dto.CategoryDto;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by eswaraprasadh on 09-03-2017.
@@ -33,7 +36,7 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
 
     @Test
     public void testFetchAllCategory() {
-        Collection<Category> categories = categoryService.list();
+        List<CategoryDto> categories = categoryService.list(new Page());
         Assert.assertNotNull(categories);
         System.out.println("categories size "+categories.size());
     }

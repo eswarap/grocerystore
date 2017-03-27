@@ -1,5 +1,6 @@
 package com.woven.grocerystore.service;
 
+import com.woven.grocerystore.jpa.Page;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.dto.CategoryDto;
 
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public interface CategoryService extends GenericGroceryService<Category> {
     
-    List<CategoryDto> list();
+    List<CategoryDto> list(Page page);
     
     boolean update(final CategoryDto categoryDto);
     
