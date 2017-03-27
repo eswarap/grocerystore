@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.woven.grocerystore.jpa.Page;
@@ -84,4 +85,12 @@ public class CategoryController {
     	return "redirect:/categories/getall";
     	
     }
+    
+   @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public String remove(@RequestParam("categoryId") Long categoryId) {
+        
+        this.categoryService.delete(categoryId);
+    	return "redirect:/categories/getall";
+    
+    }    
 }

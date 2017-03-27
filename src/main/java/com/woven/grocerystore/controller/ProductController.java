@@ -57,8 +57,7 @@ public class ProductController {
     @RequestMapping(value= {"add"}, method = RequestMethod.POST)
     public String add(@ModelAttribute("product") ProductDto productDto,BindingResult result,
                         ModelMap model){
-        System.out.println("####product Id = "+productDto.getProductName());
-        System.out.println("####category Id = "+productDto.getCategory().getCategoryId());
+                            
     	this.productService.save(productDto);
     	return "redirect:/products/getall";
     	
@@ -66,6 +65,7 @@ public class ProductController {
     
     @RequestMapping(value = "enter", method = RequestMethod.GET)
     public ModelAndView enter(Model model) {
+        
         ProductDto productDto = new ProductDto();
         CategoryDto category = new CategoryDto();
         productDto.setCategory(category);
@@ -79,6 +79,7 @@ public class ProductController {
     
     @RequestMapping(value = "edit/{prodId}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable Long prodId,Model model) {
+        
         Product product = productService.find(prodId);
         ProductDto productDto = groceryMapper.map(product, ProductDto.class);
         Category category = categoryService.find(product.getCategory().getCategoryId());
@@ -94,15 +95,16 @@ public class ProductController {
     @RequestMapping(value= "update", method = RequestMethod.POST)
     public String update(@ModelAttribute("product") ProductDto productDto,BindingResult result,
                         ModelMap model){
-        System.out.println("####product Id = "+productDto.getProductName());
-        System.out.println("####category Id = "+productDto.getCategory().getCategoryId());
+
     	this.productService.update(productDto);
     	return "redirect:/products/getall";    	
     }
     
     @RequestMapping(value = "delete", method = RequestMethod.POST)
     public String remove(@RequestParam("productId") Long productId) {
+        
         this.productService.delete(productId);
     	return "redirect:/products/getall";
+    
     }
 }

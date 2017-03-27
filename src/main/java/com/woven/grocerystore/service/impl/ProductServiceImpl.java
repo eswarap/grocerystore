@@ -62,9 +62,8 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
     }
 
     public boolean save(ProductDto productDto) {
+        
         Product product = groceryMapper.map(productDto,Product.class);
-        System.out.println("##########productDto "+productDto.getProductName());
-        System.out.println("##########product "+product.getProductName());
         Category category = categoryService.find(productDto.getCategory().getCategoryId());
         product.setCategory(category);
         super.save(product);
@@ -73,9 +72,8 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
     }
     
     public boolean update(ProductDto productDto) {
+
         Product product = groceryMapper.map(productDto,Product.class);
-        System.out.println("##########productDto "+productDto.getProductName());
-        System.out.println("##########product "+product.getProductName());
         Category category = categoryService.find(productDto.getCategory().getCategoryId());
         product.setCategory(category);
         super.save(product);

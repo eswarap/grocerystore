@@ -19,10 +19,10 @@
                 <td>${product.description}</td>
                 <td>${product.category.categoryName}</td>
                 <td>${product.category.description}</td>
-                <td class="delete">
+                <td >
                     <form id="deleteProduct" action="${deleteUrl}" method="POST">
                         <input id="productId" name="productId" type="hidden" value="${product.productId}"/>
-                        <input type="image" src="${deleteImg}"" value="delete" onClick="return confirm('sure?')"/>
+                        <input class="delete" type="image" src="${deleteImg}"" value="delete" onClick="return confirm('sure?')"/>
                     </form>
                 </td>
             </tr>

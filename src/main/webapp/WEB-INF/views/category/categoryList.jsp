@@ -15,7 +15,12 @@
             <tr>
                 <td><a href="${editUrl}/${category.categoryId}"/>${category.categoryName}</a></td>
                 <td>${category.description}</td>
-                <td><a href="${deleteUrl}/${category.categoryId}" class="portrait"><img src="${deleteImg}"/></a></td>
+                <td >
+                    <form id="deleteCategory" action="${deleteUrl}" method="POST">
+                        <input id="categoryId" name="categoryId" type="hidden" value="${category.categoryId}"/>
+                        <input class="delete" type="image" src="${deleteImg}"" value="delete" onClick="return confirm('sure?')"/>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
     </table>

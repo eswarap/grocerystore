@@ -21,6 +21,7 @@ img {
 }
 
 .delete {
-    height:30%;
-    width:30%;
+    height:10%;
+    width:10%;
+    align:center;
 }
