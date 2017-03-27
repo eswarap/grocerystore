@@ -95,7 +95,7 @@ public class ProductController {
                         ModelMap model){
         System.out.println("####product Id = "+productDto.getProductName());
         System.out.println("####category Id = "+productDto.getCategory().getCategoryId());
-    	this.productService.save(productDto);
+    	this.productService.update(productDto);
     	return "redirect:/products/getall";
     	
     }

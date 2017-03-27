@@ -19,6 +19,11 @@ public class PhoneServiceImpl extends GroceryService<Phone> implements PhoneServ
     }
 
     @Override
+    public Phone update(Phone phone) {
+        return super.update(phone);
+    }
+    
+    @Override
     public Phone find(Long id) {
         return super.find(id);
     }

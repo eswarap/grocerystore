@@ -23,6 +23,12 @@ public abstract class GroceryService<T> implements GenericGroceryService<T> {
 
     @Override
     public T save(T t) {
+        this.em.persist(t);
+        return t;
+    }
+    
+    @Override
+    public T update(T t) {
         this.em.merge(t);
         return t;
     }

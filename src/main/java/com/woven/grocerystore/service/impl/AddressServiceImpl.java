@@ -24,6 +24,11 @@ public class AddressServiceImpl extends GroceryService<Address>  implements Addr
     public Address save(Address address) {
        return super.save(address);
     }
+    
+     @Override
+    public Address update(Address address) {
+       return super.update(address);
+    }
 
     @Override
     public Address find(Long addressId) {

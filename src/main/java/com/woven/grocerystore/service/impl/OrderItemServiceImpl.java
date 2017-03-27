@@ -30,4 +30,9 @@ public class OrderItemServiceImpl extends GroceryService<OrderItem> implements O
     public OrderItem save(OrderItem t) {
         return super.save(t);
     }
+    
+    @Override
+    public OrderItem update(OrderItem t) {
+        return super.update(t);
+    }
 }

@@ -42,6 +42,12 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
     }
 
     @Override
+    public Product update(Product product) {
+        return super.update(product);
+    }
+
+
+    @Override
     public Product find(Long id) {
         return super.find(id);
     }

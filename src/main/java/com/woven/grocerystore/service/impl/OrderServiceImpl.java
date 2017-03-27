@@ -24,6 +24,11 @@ public class OrderServiceImpl  extends GroceryService<StoreOrder>  implements Or
     public StoreOrder save(StoreOrder t) {
         return super.save(t);
     }
+
+    @Override
+    public StoreOrder update(StoreOrder t) {
+        return super.update(t);
+    }
     
     @Override
     public Collection<StoreOrder> fetchAllOrder() {

@@ -80,7 +80,7 @@ public class CategoryController {
     public String update(@ModelAttribute("category") CategoryDto categoryDto,BindingResult result,
                         ModelMap model){
         
-    	this.categoryService.save(categoryDto);
+    	this.categoryService.update(categoryDto);
     	return "redirect:/categories/getall";
     	
     }

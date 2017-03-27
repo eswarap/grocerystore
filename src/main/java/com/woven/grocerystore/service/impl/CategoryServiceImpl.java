@@ -65,7 +65,7 @@ public class CategoryServiceImpl extends GroceryService<Category> implements Cat
     public boolean update(CategoryDto categoryDto) {
         
         Category category = groceryMapper.map(categoryDto,Category.class);
-        super.save(category);
+        super.update(category);
         
         return true;
     }
