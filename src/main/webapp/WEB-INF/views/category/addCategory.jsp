@@ -5,7 +5,7 @@
         <form:form cssClass="form-horizontal" method="POST" action="${addUrl}" modelAttribute="category">
              <table>
                 <tr>
-                    <td><form:label path="categoryName">category Name</form:label></td>
+                    <td><form:label path="categoryName">Category Name</form:label></td>
                     <td><form:input path="categoryName"/></td>
                 </tr>
                 <tr>
