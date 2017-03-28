@@ -4,10 +4,14 @@ import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.OrderItem;
 import com.woven.grocerystore.jpa.Product;
 import com.woven.grocerystore.jpa.StoreOrder;
+
 import org.junit.Assert;
 import org.junit.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -38,6 +42,8 @@ public class OrderItemServiceTest extends BaseIntegrationServiceTest  {
     }
 
     @Test
+    @Transactional
+    @Rollback(true)
     public void testCreateOrderItem() {
         Product product = productService.find(1l);
         StoreOrder storeOrder = orderService.find(1l);

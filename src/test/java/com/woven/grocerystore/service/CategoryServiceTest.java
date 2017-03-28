@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,8 +30,10 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
     }
 
     @Test
+    @Transactional 
+    @Rollback(true)
     public void testCreateCategory() {
-        Category lcategory = new Category("TV","Electronics");
+        Category lcategory = new Category("DummyCat","DummyDescription");
         Category category = categoryService.save(lcategory);
         Assert.assertNotNull(category);
     }

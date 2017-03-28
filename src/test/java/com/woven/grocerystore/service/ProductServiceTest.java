@@ -5,6 +5,7 @@ import com.woven.grocerystore.dto.CategoryDto;
 import com.woven.grocerystore.dto.ProductDto;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.jpa.Product;
+import com.woven.grocerystore.mapper.GroceryMapper;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -27,6 +28,10 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     @Autowired
     @Qualifier("categoryService")
     private CategoryService categoryService;
+
+    @Autowired
+    @Qualifier("groceryMapper")    
+    private GroceryMapper groceryMapper;
 
     @Test
     public void testCreateProduct() {
@@ -59,10 +64,8 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
         productDto.setProductId(1l);
         productDto.setProductName("PROD");
         productDto.setDescription("description");
-        CategoryDto categoryDto = new CategoryDto();
-        categoryDto.setCategoryId(1l);
-        categoryDto.setCategoryName("category");
-        categoryDto.setDescription("description");
+        Category category = categoryService.find(1l);
+        CategoryDto categoryDto = groceryMapper.map(category,CategoryDto.class);
         productDto.setCategory(categoryDto);
         boolean updated = productService.update(productDto);
         Assert.assertEquals(updated,true);

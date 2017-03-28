@@ -28,11 +28,11 @@ public class StoreOrder implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
     
-    @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="CUSTOMER_ID")
     private Customer customer;
     
-    @OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST,mappedBy="storeOrder")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="storeOrder")
     private Set<OrderItem> orderItems = new HashSet<OrderItem>(0);
      
     @Column(name="ORDER_STATUS")

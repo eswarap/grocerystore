@@ -29,11 +29,11 @@ public class OrderItem implements Serializable {
      @GeneratedValue(strategy=GenerationType.AUTO) 
      private Long orderItemId;
      
-     @ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
+     @ManyToOne(fetch = FetchType.LAZY)
      @JoinColumn(name="STORE_ORDER_ID")
      private StoreOrder storeOrder;
 
-     @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.PERSIST)
+     @OneToOne(fetch = FetchType.LAZY)
      @JoinColumn(name="PRODUCT_ID")
      private Product product;
     

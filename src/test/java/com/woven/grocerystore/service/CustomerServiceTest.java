@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
@@ -32,10 +34,12 @@ public class CustomerServiceTest extends BaseIntegrationServiceTest {
     }
 
     @Test
+    @Transactional 
+    @Rollback(true)
     public void testCreateCustomer() {
         Address address = addressService.find(11l);
         Phone phone = phoneService.find(4l);
-        Customer lcustomer = new Customer("Arun","arun@nomanworld.com",address,phone);
+        Customer lcustomer = new Customer("DummyName","DummyEmail@nomanworld.com",address,phone);
         Customer customer = customerService.save(lcustomer);
         Assert.assertNotNull(customer);
     }

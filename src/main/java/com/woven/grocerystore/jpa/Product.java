@@ -24,7 +24,7 @@ public class Product implements Serializable  {
     @Column(name="DESCRIPTION")
     private String description;
     
-    @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER,cascade={CascadeType.MERGE})
     @JoinColumn(name = "CATEGORY_ID",nullable=false)
     private Category category;
 

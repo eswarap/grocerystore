@@ -48,11 +48,18 @@
               </props>
             </property>
         </bean>
+        
+        <!--
+        validate: validate the schema, makes no changes to the database.
+        update: update the schema.
+        create: creates the schema, destroying previous data.
+        create-drop: drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped.
+        -->
 
-         <jdbc:embedded-database id="dataSource" type="HSQL" database-name="grocerystore">
-             <jdbc:script location="${hsql.jdbc.initLocation}"/>
-             <jdbc:script location="${hsql.jdbc.dataLocation}"/>
-         </jdbc:embedded-database>
+        <jdbc:embedded-database id="dataSource" type="HSQL" database-name="grocerystore">
+    	   <jdbc:script location="${hsql.jdbc.initLocation}" />
+    	   <jdbc:script location="${hsql.jdbc.dataLocation}" />
+        </jdbc:embedded-database>
 
         <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"

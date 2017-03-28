@@ -3,10 +3,14 @@ package com.woven.grocerystore.service;
 import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.Customer;
 import com.woven.grocerystore.jpa.StoreOrder;
+
 import org.junit.Assert;
 import org.junit.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Date;
@@ -29,6 +33,8 @@ public class OrderServiceTest extends BaseIntegrationServiceTest {
     }
 
     @Test
+    @Transactional
+    @Rollback(true)
     public void testCreateOrder() {
         Customer customer = customerService.find(1l);
         StoreOrder lOrder = new StoreOrder(customer,"Initiated",new Date(),1);
