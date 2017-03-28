@@ -1,4 +1,4 @@
     </div>
-<p>Copyright © 2017</p>
+<footer>Copyright &copy; 2017</footer>
 </body>
 </html>

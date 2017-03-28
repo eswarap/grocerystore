@@ -2,11 +2,11 @@
 <c:url var="enterPUrl" value="/products/enter"/>
 <c:url var="listCUrl" value="/categories/getall"/>
 <c:url var="enterCUrl" value="/categories/enter"/>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <a href="${listPUrl}">Product List</a><br/>
-        <a href="${enterPUrl}">Add Product </a><br/>
-        <a href="${listCUrl}">Category List</a><br/>
-        <a href="${enterCUrl}">Add Category </a>
+<nav>
+    <ul>
+        <li><a href="${listPUrl}">Product List</a></li>
+        <li><a href="${enterPUrl}">Add Product </a></li>
+        <li><a href="${listCUrl}">Category List</a></li>
+        <li><a href="${enterCUrl}">Add Category </a></li>
     </div>
 </nav>

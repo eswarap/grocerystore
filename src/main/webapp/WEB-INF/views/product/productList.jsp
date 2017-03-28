@@ -3,7 +3,6 @@
 <c:url var="deleteUrl" value="/products/delete"/>
 <c:url var="deleteImg" value="/resources/delete.jpg" />
 
-<h2>Store products</h2>
 <div class="bs-component">
     <table class="table table-striped table-hover ">
         <thead>

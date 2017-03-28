@@ -7,8 +7,10 @@
   <head><title>Hello :: Spring Application</title>
   <meta http-equiv="Content-Type"  content="text/html; charset=UTF-8" />
    <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" >
-   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" >
   </head>
   <body> 
-  <div class="jumbotron">
-      <%@ include file="menu.jsp" %>
+  <div class="container">
+  <header>
+   <h1>Neighbourhood Store</h1>
+</header>
+     <%@ include file="menu.jsp" %>

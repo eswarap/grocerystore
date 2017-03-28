@@ -2,7 +2,6 @@
 <c:url var="editUrl" value="/categories/edit"/>
 <c:url var="deleteUrl" value="/categories/delete" />
 <c:url var="deleteImg" value="/resources/delete.jpg" />
-<h2>Store categories</h2>
 <div class="bs-component">
 <table class="table table-striped table-hover ">
     <thead>
