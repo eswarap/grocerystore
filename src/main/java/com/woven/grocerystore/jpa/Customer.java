@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Access(AccessType.FIELD)
 public class Customer implements Serializable  {
 
     private static final long serialVersionUID = 1l;
@@ -17,7 +16,7 @@ public class Customer implements Serializable  {
     @Column(name="CUSTOMER_NAME")
     private String customerName;
     
-    @Column(name="EMAIL")
+    @Column(name="EMAIL",unique = true)
     private String email;
     
     @ManyToOne(fetch = FetchType.LAZY)
@@ -28,6 +27,46 @@ public class Customer implements Serializable  {
     @JoinColumn(name="PHONE_ID")
     private Phone phone;
   
+    public Address getAddress() {
+        return address;
+    }
+    
+    public Long getCustomerId() {
+        return customerId;
+    }
+    
+    public String getCustomerName() {
+        return customerName;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public Phone getPhone() {
+        return phone;
+    }
+    
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+    
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public void setPhone(Phone phone) {
+        this.phone = phone;
+    }
+    
     public Customer() {
         
     }

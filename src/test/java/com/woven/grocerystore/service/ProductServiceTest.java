@@ -1,15 +1,19 @@
 package com.woven.grocerystore.service;
 
+import com.woven.grocerystore.base.BaseIntegrationServiceTest;
+import com.woven.grocerystore.dto.CategoryDto;
+import com.woven.grocerystore.dto.ProductDto;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.jpa.Product;
+import com.woven.grocerystore.mapper.GroceryMapper;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import java.util.Collection;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -25,27 +29,51 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     @Qualifier("categoryService")
     private CategoryService categoryService;
 
+    @Autowired
+    @Qualifier("groceryMapper")    
+    private GroceryMapper groceryMapper;
 
+    @Test
+    public void testCreateProduct() {
+        Category category = categoryService.find(1l);
+        assertNotNull(category);
+        Product product = new Product("BTWin","Singe cycle",category);
+        productService.save(product);
+        assertNotNull(product);
+    }
+    
+    @Test
+    public void testFetchAllProduct() {
+        List<ProductDto> products = productService.list();
+        assertNotNull(products);
+        LOG.info(String.format("products size %s",products.size()));
+        Assert.assertTrue("product size",products.size()>=1);
+    }
+    
     @Test
     public void testGetProduct() {
         Product product = productService.find(1l);
         assertNotNull(product);
-        assertEquals(product.productId.longValue(),1l);
+        assertNotNull(product.getCategory());
+        LOG.info(String.format("category %s",product.getCategory().getCategoryName()));
     }
-
-    @Test
-    public void testSaveProduct() {
+    
+     @Test
+    public void testUpdateProduct() {
+        ProductDto productDto = new ProductDto();
+        productDto.setProductId(1l);
+        productDto.setProductName("PROD");
+        productDto.setDescription("description");
         Category category = categoryService.find(1l);
-        Product product = new Product("LED Smart TV","Samsung 52 inch",category);
-        productService.save(product);
+        CategoryDto categoryDto = groceryMapper.map(category,CategoryDto.class);
+        productDto.setCategory(categoryDto);
+        boolean updated = productService.update(productDto);
+        Assert.assertEquals(updated,true);
+        Product product = productService.find(1l);
         assertNotNull(product);
-        assertEquals(1l,product.productId.longValue());
+        System.out.println(String.format("product %s",product));
+        Assert.assertEquals("PROD",product.getProductName());
+        Assert.assertEquals("description",product.getDescription()); 
     }
-
-    @Test
-    public void testFetchAllProduct() {
-        Collection<Product> products = productService.fetchAllProduct();
-        assertNotNull(products);
-        assertEquals(1,products.size());
-    }
+    
 }

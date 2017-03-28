@@ -26,9 +26,23 @@ public abstract class GroceryService<T> implements GenericGroceryService<T> {
         this.em.persist(t);
         return t;
     }
+    
+    @Override
+    public T update(T t) {
+        this.em.merge(t);
+        return t;
+    }
 
     @Override
     public T find(Long id) {
         return em.find(type,id);
     }
+    
+    @Override
+    public boolean delete(Long id) {
+        T t = find(id);
+        em.remove(t);
+        return true;
+    }
+    
 }

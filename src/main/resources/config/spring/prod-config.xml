@@ -20,7 +20,7 @@
 
     <!-- Configurer that replaces ${...} placeholders with values from a properties file -->
     <!-- (in this case, JDBC-related settings for the dataSource definition below) -->
-    <context:property-placeholder location="classpath:config/db/pgsql.properties" system-properties-mode="OVERRIDE"/>
+    <context:property-placeholder location="classpath:config/db/postgresql/pgsql.properties" system-properties-mode="OVERRIDE"/>
 
     <!-- DataSource configuration for the tomcat jdbc connection pool 
     See here for more details on commons-dbcp versus tomcat-jdbc: 
@@ -28,9 +28,20 @@
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
           p:driverClassName="${pgsql.jdbc.driverClassName}" p:url="${pgsql.jdbc.url}"
           p:username="${pgsql.jdbc.username}" p:password="${pgsql.jdbc.password}"/>
+
+    <!--jdbc:initialize-database data-source="dataSource"  enabled="true" ignore-failures="DROPS">
+        <jdbc:script location="${pgsql.jdbc.initLocation}" execution="INIT"/>
+        <jdbc:script location="${pgsql.jdbc.dataLocation}" execution="INIT"/>
+    </jdbc:initialize-database-->
+
+
+    <beans profile="javaee">      
+        <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/grocerystore"/>
+        <bean id="jndiDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+            <property name="jndiName" value="java:comp/env/jdbc/grocerystore"/>
+            <property name="resourceRef" value="true" />
+        </bean>
+
+    </beans>   
     
-    <beans profile="javaee" >
-        <!-- JNDI DataSource for JEE environments -->
-        <jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/dd0gksdhoedo5d"/>
-    </beans>
 </beans>

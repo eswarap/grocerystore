@@ -12,11 +12,17 @@ import java.util.Collection;
 @Service(value="phoneService")
 @Transactional
 public class PhoneServiceImpl extends GroceryService<Phone> implements PhoneService {
+    
     @Override
     public Phone save(Phone phone) {
         return super.save(phone);
     }
 
+    @Override
+    public Phone update(Phone phone) {
+        return super.update(phone);
+    }
+    
     @Override
     public Phone find(Long id) {
         return super.find(id);
@@ -27,5 +33,10 @@ public class PhoneServiceImpl extends GroceryService<Phone> implements PhoneServ
         Query query = em.createQuery("from Phone");
         return (Collection<Phone>) query.getResultList();
     }
+    
+    @Override
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }    
     
 }

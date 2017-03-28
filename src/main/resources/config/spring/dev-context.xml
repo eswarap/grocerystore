@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:tx="http://www.springframework.org/schema/tx"
-xsi:schemaLocation="
-    http://www.springframework.org/schema/beans 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <!-- import the dataSource definition -->
     <import resource="classpath:config/spring/dev-config.xml"/>
     
     <tx:annotation-driven />
      
-    <context:component-scan base-package="com.woven.grocerystore.service" />
+    <context:component-scan base-package="com.woven.grocerystore" />
     
      <beans profile="jpa-hsql">
         <!--
@@ -32,7 +31,7 @@ xsi:schemaLocation="
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
               p:dataSource-ref="dataSource">
             <property name="jpaVendorAdapter">
-                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" p:databasePlatform="${hsql.hibernate.dialect}"
                       p:database="${hsql.jpa.database}" p:showSql="${hsql.jpa.showSql}" p:generateDdl="${hsql.jpa.generateDdl}" />
                 <!-- the 'database' parameter refers to the database dialect being used.
                 	By default, Hibernate will use a 'HSQL' dialect because 'jpa.database' has been set to 'HSQL'
@@ -43,7 +42,24 @@ xsi:schemaLocation="
             <!-- gDickens: BOTH Persistence Unit and Packages to Scan are NOT compatible, persistenceUnit will win -->
             <property name="persistenceUnitName" value="GS_UNIT"/>
             <property name="packagesToScan" value="com.woven.grocerystore.jpa"/>
+              <property name="jpaProperties">
+              <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+              </props>
+            </property>
         </bean>
+        
+        <!--
+        validate: validate the schema, makes no changes to the database.
+        update: update the schema.
+        create: creates the schema, destroying previous data.
+        create-drop: drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped.
+        -->
+
+        <jdbc:embedded-database id="dataSource" type="HSQL" database-name="grocerystore">
+    	   <jdbc:script location="${hsql.jdbc.initLocation}" />
+    	   <jdbc:script location="${hsql.jdbc.dataLocation}" />
+        </jdbc:embedded-database>
 
         <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"

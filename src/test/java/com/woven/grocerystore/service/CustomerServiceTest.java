@@ -1,13 +1,15 @@
 package com.woven.grocerystore.service;
 
+import com.woven.grocerystore.base.BaseIntegrationServiceTest;
+import com.woven.grocerystore.jpa.Address;
+import com.woven.grocerystore.jpa.Customer;
+import com.woven.grocerystore.jpa.Phone;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-
-import com.woven.grocerystore.jpa.Address;
-import com.woven.grocerystore.jpa.Customer;
-import com.woven.grocerystore.jpa.Phone;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 
@@ -32,10 +34,12 @@ public class CustomerServiceTest extends BaseIntegrationServiceTest {
     }
 
     @Test
-    public void testSaveCustomer() {
-        Address address = addressService.find(1l);
-        Phone phone = phoneService.find(1l);
-        Customer lcustomer = new Customer("Arun","arun@nomanworld.com",address,phone);
+    @Transactional 
+    @Rollback(true)
+    public void testCreateCustomer() {
+        Address address = addressService.find(11l);
+        Phone phone = phoneService.find(4l);
+        Customer lcustomer = new Customer("DummyName","DummyEmail@nomanworld.com",address,phone);
         Customer customer = customerService.save(lcustomer);
         Assert.assertNotNull(customer);
     }

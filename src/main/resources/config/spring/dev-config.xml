@@ -20,7 +20,7 @@
 
     <!-- Configurer that replaces ${...} placeholders with values from a properties file -->
     <!-- (in this case, JDBC-related settings for the dataSource definition below) -->
-    <context:property-placeholder location="classpath:config/db/hsql.properties" system-properties-mode="OVERRIDE"/>
+    <context:property-placeholder location="classpath:config/db/h2/hsql.properties" system-properties-mode="OVERRIDE"/>
 
     <!-- DataSource configuration for the tomcat jdbc connection pool 
     See here for more details on commons-dbcp versus tomcat-jdbc: 
@@ -28,7 +28,7 @@
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
           p:driverClassName="${hsql.jdbc.driverClassName}" p:url="${hsql.jdbc.url}"
           p:username="${hsql.jdbc.username}" p:password="${hsql.jdbc.password}"/>
-    
+
     <beans profile="javaee" >
         <!-- JNDI DataSource for JEE environments -->
         <jee:jndi-lookup id="dataSource" jndi-name="jdbc/grocerystore"/>

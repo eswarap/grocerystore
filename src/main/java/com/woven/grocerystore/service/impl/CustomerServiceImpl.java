@@ -24,9 +24,20 @@ public class CustomerServiceImpl extends GroceryService<Customer> implements Cus
     public Customer save(Customer customer) {
         return super.save(customer);
     }
+    
+     @Override
+    public Customer update(Customer customer) {
+        return super.update(customer);
+    }
 
     @Override
     public Customer find(Long id) {
         return super.find(id);
     }
+    
+    @Override
+    public boolean delete(Long id) {
+        return super.delete(id);
+    }
+
 }
