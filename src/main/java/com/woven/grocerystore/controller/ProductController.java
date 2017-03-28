@@ -88,7 +88,7 @@ public class ProductController {
         List<CategoryDto> categoryList = categoryService.list(new Page());
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("category",categoryDto);
-        
+        model.addAttribute("productId",prodId);
 		return new ModelAndView("product/editProduct");
     }
     

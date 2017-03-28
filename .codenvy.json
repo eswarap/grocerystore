@@ -64,7 +64,7 @@
       "type": "custom"
     },
     {
-      "commandLine": "cd ${current.project.path} && mvn clean install -DskipTests && rm -rf  $TOMCAT_HOME/webapps/grocerystore* && cp ${current.project.path}/target/grocerystore-1.0.war $TOMCAT_HOME/webapps/ && $TOMCAT_HOME/bin/catalina.sh run",
+      "commandLine": "cd  ${current.project.path} && mvn clean install -DskipTests && rm -rf  $TOMCAT_HOME/webapps/grocerystore* && cp  ${current.project.path}/target/grocerystore-1.0.war $TOMCAT_HOME/webapps/ && cp  ${current.project.path}/target/dependency/grocerystore-1.0.xml  $TOMCAT_HOME/conf/Catalina/localhost/  && rm -rf $TOMCAT_HOME/work/Catalina/localhost/grocerystore-1.0 && $TOMCAT_HOME/bin/catalina.sh run",
       "name": "grocerystore build deploy",
       "attributes": {
         "previewUrl": "http://${server.port.8080}/grocerystore-1.0"

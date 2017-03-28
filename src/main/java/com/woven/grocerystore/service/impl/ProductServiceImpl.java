@@ -76,7 +76,7 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
         Product product = groceryMapper.map(productDto,Product.class);
         Category category = categoryService.find(productDto.getCategory().getCategoryId());
         product.setCategory(category);
-        super.save(product);
+        super.update(product);
         
         return true;
     }

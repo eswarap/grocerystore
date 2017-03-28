@@ -3,7 +3,7 @@
 <center>
    <div id="categoryForm" >	
 		 <form:form method="POST" action="${updateUrl}" modelAttribute="category">
-		     <form:hidden path="categoryId" >
+		     <form:hidden path="categoryId" />
              <table>
                 <tr>
                     <td><form:label path="categoryName">Category Name</form:label></td>

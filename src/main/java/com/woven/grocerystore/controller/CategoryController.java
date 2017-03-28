@@ -73,6 +73,7 @@ public class CategoryController {
         List<CategoryDto> categoryList = categoryService.list(new Page());
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("category",categoryDto);
+        model.addAttribute("categoryId",catId);
         
 		return new ModelAndView("category/editCategory");
     }

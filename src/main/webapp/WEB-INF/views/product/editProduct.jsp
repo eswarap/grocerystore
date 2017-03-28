@@ -3,6 +3,7 @@
 <center>
    <div id="productForm" >	
 		 <form:form method="POST" action="${updateUrl}" modelAttribute="product">
+		     <form:hidden path="productId"/>
              <table>
                 <tr>
                     <td><form:label path="productName">Product Name</form:label></td>
