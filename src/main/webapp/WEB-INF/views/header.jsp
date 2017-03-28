@@ -6,9 +6,9 @@
 <html>
   <head><title>Hello :: Spring Application</title>
   <meta http-equiv="Content-Type"  content="text/html; charset=UTF-8" />
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+   <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" >
+   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" >
   </head>
   <body> 
   <div class="jumbotron">
       <%@ include file="menu.jsp" %>
-    </div>
