@@ -18,7 +18,7 @@
             <td><a href="${editUrl}/${category.categoryId}"/>${category.categoryName}</a></td>
             <td>${category.description}</td>
             <td >
-                <form id="deleteCategory" action="${deleteUrl}" method="POST">
+                <form id="deleteCategory" action="${fn:escapeXml(${deleteUrl})}" method="POST">
                     <input id="categoryId" name="categoryId" type="hidden" value="${category.categoryId}"/>
                     <input class="delete" type="image" src="${deleteImg}"" value="delete" onClick="return confirm('sure?')"/>
                 </form>

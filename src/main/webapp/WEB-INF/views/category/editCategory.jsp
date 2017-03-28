@@ -1,7 +1,7 @@
 <%@ include file="../header.jsp" %>
 <c:url var="updateUrl" value="/categories/update"/>
    <div id="categoryForm" class="form-group">	
-		 <form:form method="POST" action="${updateUrl}" modelAttribute="category">
+		 <form:form cssClass="form-horizontal" method="POST" action="${updateUrl}" modelAttribute="category">
 		     <form:hidden path="categoryId" />
              <table>
                 <tr>

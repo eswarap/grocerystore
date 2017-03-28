@@ -1,7 +1,7 @@
 <%@ include file="../header.jsp" %>
 <c:url var="updateUrl" value="/products/update"/>
    <div id="productForm" >	
-		 <form:form method="POST" action="${updateUrl}" modelAttribute="product">
+		 <form:form  cssClass="form-horizontal" method="POST" action="${updateUrl}" modelAttribute="product">
 		     <form:hidden path="productId"/>
              <table>
                 <tr>
