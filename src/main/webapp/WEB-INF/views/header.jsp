@@ -4,6 +4,7 @@
 <html>
   <head><title>Hello :: Spring Application</title>
   <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" >
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
   </head>
   <body> 
   <div>
