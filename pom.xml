@@ -411,6 +411,11 @@
                                     <artifactId>jstl</artifactId>
                                     <version>1.2</version>
                          	   </artifactItem>
+                         	    <artifactItem>
+                                    <groupId>org.apache.tomcat</groupId>
+                                    <artifactId>tomcat-dbcp</artifactId>
+                                    <version>8.0.33</version>
+                                </artifactItem>
                        		 </artifactItems>
                   		  </configuration>
              		   </execution>
