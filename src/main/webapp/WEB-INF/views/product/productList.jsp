@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <c:url var="editUrl" value="/products/edit"/>
 <c:url var="deleteUrl" value="/products/delete"/>
 <c:url var="deleteImg" value="/resources/delete.jpg" />
-<center>
+
     <h2>Store products</h2>
     <div>
-    <table border="1">
+    <table class="table table-striped table-hover ">
         <tr>
             <th>Product</th>
             <th>Description</th>
@@ -30,5 +29,4 @@
         </c:forEach>
     </table>
     </div>
-</center>
 <%@ include file="../footer.jsp" %>

@@ -3,7 +3,7 @@
 <c:url var="addUrl" value="/categories/add"/>
 <center>
  <h3>Welcome, Enter The category Details</h3>
-        <form:form method="POST" action="${addUrl}" modelAttribute="category">
+        <form:form cssClass="form-horizontal" method="POST" action="${addUrl}" modelAttribute="category">
              <table>
                 <tr>
                     <td><form:label path="categoryName">category Name</form:label></td>

@@ -4,8 +4,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
   <head><title>Hello :: Spring Application</title>
+  <meta http-equiv="Content-Type"  content="text/html; charset=UTF-8" />
   <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" >
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" >
   </head>
   <body> 
   <div>
