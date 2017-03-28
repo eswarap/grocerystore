@@ -3,13 +3,16 @@
 <c:url var="deleteUrl" value="/categories/delete" />
 <c:url var="deleteImg" value="/resources/delete.jpg" />
 <h2>Store categories</h2>
-<div>
+<div class="bs-component">
 <table class="table table-striped table-hover ">
+    <thead>
     <tr>
         <th>Category</th>
         <th>Description</th>     
         <th>Action</th>
     </tr>
+    </thead>
+    <tbody>
     <c:forEach items="${categories}" var="category">
         <tr>
             <td><a href="${editUrl}/${category.categoryId}"/>${category.categoryName}</a></td>
@@ -22,6 +25,7 @@
             </td>
         </tr>
     </c:forEach>
+    </tbody>
 </table>
 </div>
 <%@ include file="../footer.jsp" %>

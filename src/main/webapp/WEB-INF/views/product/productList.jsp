@@ -3,9 +3,10 @@
 <c:url var="deleteUrl" value="/products/delete"/>
 <c:url var="deleteImg" value="/resources/delete.jpg" />
 
-    <h2>Store products</h2>
-    <div>
+<h2>Store products</h2>
+<div class="bs-component">
     <table class="table table-striped table-hover ">
+        <thead>
         <tr>
             <th>Product</th>
             <th>Description</th>
@@ -13,6 +14,8 @@
             <th>Category description</th>     
             <th>Action</th>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach items="${products}" var="product">
             <tr>
                 <td><a href="${editUrl}/${product.productId}"/>${product.productName}</a></td>
@@ -27,6 +30,7 @@
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
-    </div>
+</div>
 <%@ include file="../footer.jsp" %>

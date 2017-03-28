@@ -1,7 +1,7 @@
 <%@ include file="../header.jsp" %>
 <c:url var="updateUrl" value="/categories/update"/>
 <center>
-   <div id="categoryForm" >	
+   <div id="categoryForm" class="form-group">	
 		 <form:form method="POST" action="${updateUrl}" modelAttribute="category">
 		     <form:hidden path="categoryId" />
              <table>
@@ -14,7 +14,7 @@
                     <td><form:input path="description"/></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Submit"/></td>
+                    <td><input class="btn btn-primary" type="submit" value="Submit"/></td>
                 </tr>
             </table>
         </form:form>

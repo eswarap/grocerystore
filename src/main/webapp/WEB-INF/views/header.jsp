@@ -9,6 +9,6 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet" >
   </head>
   <body> 
-  <div>
+  <div class="jumbotron">
       <%@ include file="menu.jsp" %>
-</div>
+    </div>
