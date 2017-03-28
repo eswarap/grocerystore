@@ -27,11 +27,12 @@ import org.slf4j.LoggerFactory;
 @Controller
 @RequestMapping(value="/categories")
 public class CategoryController {
-      protected final Logger LOG = LoggerFactory.getLogger(getClass());
+    
+    protected final Logger LOG = LoggerFactory.getLogger(getClass());
     
     @Autowired
     @Qualifier("categoryService")
-    CategoryService categoryService;
+    private CategoryService categoryService;
     
     
     @Autowired

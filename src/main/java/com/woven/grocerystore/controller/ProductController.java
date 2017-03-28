@@ -1,7 +1,6 @@
 package com.woven.grocerystore.controller;
 
 import java.util.List;
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +35,11 @@ public class ProductController {
     
     @Autowired
     @Qualifier("productService")
-    ProductService productService;
+    private ProductService productService;
     
     @Autowired
     @Qualifier("categoryService")
-    CategoryService categoryService;
+    private  CategoryService categoryService;
     
     @Autowired
     @Qualifier("groceryMapper")
