@@ -30,11 +30,6 @@ public class OrderItemServiceTest extends BaseIntegrationServiceTest  {
     @Qualifier("orderService")
     private OrderService orderService;
     
-    @Autowired
-    @Qualifier("customerService")
-    private CustomerService customerService;
-
-
     @Test
     public void testGetOrderItem() {
         OrderItem orderItem = orderItemService.find(1l);

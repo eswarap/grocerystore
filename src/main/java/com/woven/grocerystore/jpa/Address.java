@@ -75,6 +75,14 @@ public class Address implements Serializable {
         this.zipCode = zipCode;
     }
    
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
+    }
+    
+    public Set<Customer> getCustomers() {
+        return customers;
+    }
+    
     public Address(String street,String city,String state,String zipCode) {
         this.street = street;
         this.city = city;
