@@ -1,6 +1,5 @@
 <%@ include file="../header.jsp" %>
 <c:url var="updateUrl" value="/products/update"/>
-<center>
    <div id="productForm" >	
 		 <form:form method="POST" action="${updateUrl}" modelAttribute="product">
 		     <form:hidden path="productId"/>
@@ -26,5 +25,4 @@
             </table>
         </form:form>
 	</div>			
-</center>
 <%@ include file="../footer.jsp" %>
