@@ -18,20 +18,20 @@ public class AddressServiceTest extends BaseIntegrationServiceTest {
     private AddressService addressService;
     
     @Test
-    public void testGetAddress() {
+    public void testGet() {
         Address address = addressService.find(1l);
         Assert.assertNotNull(address);
     }
     
     @Test
-    public void testCreateAddress() {
+    public void testCreate() {
         Address lAddress = new Address("2nd Street","Bengalore","KA","560037");
         Address address = addressService.save(lAddress);
         Assert.assertNotNull(address);
     }
     
     @Test
-    public void testFetchAllAddress() {
+    public void testFetchAll() {
         Collection<Address> address = addressService.fetchAllAddress();
         Assert.assertNotNull(address);
         System.out.println("address size "+address.size());
