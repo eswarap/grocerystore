@@ -3,7 +3,7 @@ package com.woven.grocerystore.jpa;
 import javax.persistence.*;
 
 import java.io.Serializable;
-
+import java.util.Set;
 /**
  * Created by eswaraprasadh on 09-03-2017.
  */
@@ -14,6 +14,12 @@ public class Category implements Serializable {
 
     public Category() {
 
+    }
+
+    
+    public Category(String categoryName, String description) {
+        this.categoryName = categoryName;
+        this.description = description;
     }
 
     @Id
@@ -27,9 +33,15 @@ public class Category implements Serializable {
     @Column(name="DESCRIPTION")
     private String description;
 
-    public Category(String categoryName, String description) {
-        this.categoryName = categoryName;
-        this.description = description;
+    @OneToMany(cascade={CascadeType.REMOVE},mappedBy="category")
+    private Set<Product> products;
+    
+    public Set<Product> getProducts() {
+        return products;
+    }
+    
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
     
     public Long getCategoryId() {

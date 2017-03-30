@@ -23,7 +23,7 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
     private CategoryService categoryService;
 
     @Test
-    public void testGetCategory() {
+    public void testFind() {
         Category category = categoryService.find(1l);
         Assert.assertNotNull(category);
     }
@@ -31,16 +31,26 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
     @Test
     @Transactional 
     @Rollback(true)
-    public void testCreateCategory() {
+    public void testAdd() {
         Category lcategory = new Category("DummyCat","DummyDescription");
         Category category = categoryService.save(lcategory);
         Assert.assertNotNull(category);
     }
 
     @Test
-    public void testFetchAllCategory() {
+    public void testList() {
         List<CategoryDto> categories = categoryService.list();
         Assert.assertNotNull(categories);
         System.out.println("categories size "+categories.size());
+    }
+    
+     @Test
+    public void testDelete() {
+        Long count = categoryService.count();
+        Assert.assertTrue("category size",count.intValue()>=1);
+        categoryService.delete(Long.parseLong("1"));
+        /**Long countTarget = categoryService.count();
+        Assert.assertNotEquals(count, countTarget);
+        Assert.assertTrue("category size",count.intValue()>countTarget.intValue());**/
     }
 }

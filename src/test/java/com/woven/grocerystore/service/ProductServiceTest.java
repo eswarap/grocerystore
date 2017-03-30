@@ -34,7 +34,7 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     private GroceryMapper groceryMapper;
 
     @Test
-    public void testCreateProduct() {
+    public void testAdd() {
         Category category = categoryService.find(1l);
         assertNotNull(category);
         Product product = new Product("BTWin","Singe cycle",category);
@@ -43,7 +43,7 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     }
     
     @Test
-    public void testFetchAllProduct() {
+    public void testList() {
         List<ProductDto> products = productService.list();
         assertNotNull(products);
         LOG.info(String.format("products size %s",products.size()));
@@ -51,7 +51,7 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     }
     
     @Test
-    public void testGetProduct() {
+    public void testFind() {
         Product product = productService.find(1l);
         assertNotNull(product);
         assertNotNull(product.getCategory());
@@ -59,7 +59,7 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     }
     
     @Test
-    public void testUpdateProduct() {
+    public void testUpdate() {
         ProductDto productDto = new ProductDto();
         productDto.setProductId(1l);
         productDto.setProductName("PROD");
@@ -80,6 +80,16 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
     public void testCount() {
         Long count = productService.count();
         Assert.assertTrue("product size",count.intValue()>=1);
+    }
+    
+    @Test
+    public void testDelete() {
+        Long count = productService.count();
+        Assert.assertTrue("product size",count.intValue()>=1);
+        productService.delete(Long.parseLong("1"));
+        /**Long countTarget = productService.count();
+        Assert.assertNotEquals(count, countTarget);
+        Assert.assertTrue("product size",count.intValue()>countTarget.intValue());**/
     }
     
 }
