@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.woven.grocerystore.jpa.Category;
+import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.mapper.GroceryMapper;
 import com.woven.grocerystore.dto.CategoryDto;
 import com.woven.grocerystore.service.CategoryService;
@@ -38,11 +39,21 @@ public class CategoryController {
     @Qualifier("groceryMapper")
     private GroceryMapper groceryMapper;
 
-    @RequestMapping(value = "getall", method = RequestMethod.GET)
-    public ModelAndView list(Model model)
+    @RequestMapping(value = "list", method = RequestMethod.GET)
+    public ModelAndView list(Model model,@RequestParam(value="page",required=false) Integer page)
     {
-        List<CategoryDto> categoryDtoList = categoryService.list(); 
+        int count = categoryService.count().intValue();
+        int endpage =  (count+Pagination.SIZE-1)/Pagination.SIZE;
+        int startpage = 1;
+                
+        int first = page == 1 ? 0 : ( page -1 )* Pagination.SIZE;
+        int max = first + Pagination.SIZE;
+        max = max > count ? count :max;
+        Pagination pagination = new Pagination(first,max);
+        List<CategoryDto> categoryDtoList = categoryService.list(pagination); 
         model.addAttribute("categories",categoryDtoList);
+        model.addAttribute("startpage",startpage);
+        model.addAttribute("endpage",endpage);
         
         return new ModelAndView("category/categoryList");
     }
@@ -53,7 +64,7 @@ public class CategoryController {
         
     	this.categoryService.save(categoryDto);
     	
-    	return "redirect:/categories/getall";
+    	return "redirect:/categories/list?page=1";
     }
     
     @RequestMapping(value = "enter", method = RequestMethod.GET)
@@ -83,7 +94,7 @@ public class CategoryController {
                         ModelMap model){
         
     	this.categoryService.update(categoryDto);
-    	return "redirect:/categories/getall";
+    	return "redirect:/categories/list?page=1";
     	
     }
     
@@ -91,7 +102,7 @@ public class CategoryController {
     public String remove(@RequestParam("categoryId") Long categoryId) {
         
         this.categoryService.delete(categoryId);
-    	return "redirect:/categories/getall";
+    	return "redirect:/categories/list?page=1";
     
     }    
 }

@@ -45,7 +45,7 @@ public class ProductController {
     @Qualifier("groceryMapper")
     private GroceryMapper groceryMapper;
 
-    @RequestMapping(value = "getall", method = RequestMethod.GET)
+    @RequestMapping(value = "list", method = RequestMethod.GET)
     public ModelAndView list(Model model,@RequestParam(value="page",required=false) Integer page) {
         
         int count = productService.count().intValue();
@@ -68,7 +68,7 @@ public class ProductController {
                         ModelMap model){
                             
     	this.productService.save(productDto);
-    	return "redirect:/products/getall";
+    	return "redirect:/products/list?page=1";
     	
     }
     
@@ -106,14 +106,14 @@ public class ProductController {
                         ModelMap model){
 
     	this.productService.update(productDto);
-    	return "redirect:/products/getall";    	
+    	return "redirect:/products/list?page=1";    	
     }
     
     @RequestMapping(value = "delete", method = RequestMethod.POST)
     public String remove(@RequestParam("productId") Long productId) {
         
         this.productService.delete(productId);
-    	return "redirect:/products/getall";
+    	return "redirect:/products/list?page=1";
     
     }
 }

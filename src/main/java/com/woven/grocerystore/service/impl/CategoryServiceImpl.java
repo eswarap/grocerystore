@@ -33,8 +33,8 @@ public class CategoryServiceImpl extends GroceryService<Category> implements Cat
     @Override
     public List<CategoryDto> list(Pagination page) {
         TypedQuery<Category> query = em.createQuery("from Category",Category.class);
-        query.setMaxResults(page.getMax());
-        query.setFirstResult(page.getFirst()-1);
+        query.setFirstResult(page.getFirst()!= null?page.getFirst():0);
+        query.setMaxResults(page.getMax() != null ? page.getMax():Pagination.SIZE);
         List<Category> entityList = query.getResultList();
         Type listType = new TypeToken<List<CategoryDto>>() {}.getType();
         List<CategoryDto> dtoList = groceryMapper.map(entityList, listType);
