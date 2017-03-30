@@ -2,6 +2,10 @@ package com.woven.grocerystore.service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
+
+import javax.persistence.criteria.CriteriaBuilder;
+
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -43,6 +47,14 @@ public abstract class GroceryService<T> implements GenericGroceryService<T> {
         T t = find(id);
         em.remove(t);
         return true;
+    }
+    
+    @Override
+    public Long count() {
+        CriteriaBuilder critQueryBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Long> critQuery = critQueryBuilder.createQuery(Long.class);
+        critQuery.select(critQueryBuilder.count(critQuery.from(type)));
+        return em.createQuery(critQuery).getSingleResult();
     }
     
 }

@@ -9,4 +9,5 @@ public interface GenericGroceryService<T> {
     T save(T t);
     T find(Long id);
     boolean delete(Long id);
+    Long count();
 }

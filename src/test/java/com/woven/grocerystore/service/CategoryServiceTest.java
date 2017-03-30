@@ -1,7 +1,6 @@
 package com.woven.grocerystore.service;
 
 import com.woven.grocerystore.base.BaseIntegrationServiceTest;
-import com.woven.grocerystore.jpa.Page;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.dto.CategoryDto;
 
@@ -40,7 +39,7 @@ public class CategoryServiceTest extends BaseIntegrationServiceTest {
 
     @Test
     public void testFetchAllCategory() {
-        List<CategoryDto> categories = categoryService.list(new Page());
+        List<CategoryDto> categories = categoryService.list();
         Assert.assertNotNull(categories);
         System.out.println("categories size "+categories.size());
     }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.woven.grocerystore.jpa.Page;
+import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.jpa.Product;
 import com.woven.grocerystore.mapper.GroceryMapper;
@@ -46,9 +46,19 @@ public class ProductController {
     private GroceryMapper groceryMapper;
 
     @RequestMapping(value = "getall", method = RequestMethod.GET)
-    public ModelAndView list(Model model)
-    {
-        List<ProductDto> productDtoList = productService.list(); 
+    public ModelAndView list(Model model,@RequestParam(value="page",required=false) Integer page) {
+        
+        int count = productService.count().intValue();
+        int endpage =  (count+Pagination.SIZE-1)/Pagination.SIZE;
+        int startpage = 1;
+                
+        int first = page == 1 ? 0 : ( page -1 )* Pagination.SIZE;
+        int max = first + Pagination.SIZE;
+        max = max > count ? count :max;
+        Pagination pagination = new Pagination(first,max);
+        List<ProductDto> productDtoList = productService.list(pagination); 
+        model.addAttribute("startpage",startpage);
+        model.addAttribute("endpage",endpage);
         model.addAttribute("products",productDtoList);
         return new ModelAndView("product/productList");
     }
@@ -69,7 +79,7 @@ public class ProductController {
         CategoryDto category = new CategoryDto();
         productDto.setCategory(category);
         model.addAttribute("product",productDto);
-        List<CategoryDto> categoryList = categoryService.list(new Page());
+        List<CategoryDto> categoryList = categoryService.list(new Pagination());
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("category",category);
         
@@ -84,7 +94,7 @@ public class ProductController {
         Category category = categoryService.find(product.getCategory().getCategoryId());
         CategoryDto categoryDto = groceryMapper.map(category,CategoryDto.class);
         model.addAttribute("product",productDto);
-        List<CategoryDto> categoryList = categoryService.list(new Page());
+        List<CategoryDto> categoryList = categoryService.list();
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("category",categoryDto);
         model.addAttribute("productId",prodId);

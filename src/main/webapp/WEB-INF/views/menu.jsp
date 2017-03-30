@@ -1,4 +1,4 @@
-<c:url var="listPUrl" value="/products/getall"/>
+<c:url var="listPUrl" value="/products/getall?page=1"/>
 <c:url var="enterPUrl" value="/products/enter"/>
 <c:url var="listCUrl" value="/categories/getall"/>
 <c:url var="enterCUrl" value="/categories/enter"/>

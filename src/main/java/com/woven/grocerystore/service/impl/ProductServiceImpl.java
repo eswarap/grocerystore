@@ -2,6 +2,7 @@ package com.woven.grocerystore.service.impl;
 
 import com.woven.grocerystore.dto.ProductDto;
 import com.woven.grocerystore.jpa.Product;
+import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.mapper.GroceryMapper;
 import com.woven.grocerystore.service.CategoryService;
@@ -55,6 +56,17 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
     @Override
     public List<ProductDto> list() {
         TypedQuery<Product> query = em.createQuery("from Product",Product.class);
+        List<Product> entityList = query.getResultList();
+        Type listType = new TypeToken<List<ProductDto>>() {}.getType();
+        List<ProductDto> dtoList = groceryMapper.map(entityList, listType);
+        return dtoList;
+    }
+    
+    @Override
+    public List<ProductDto> list(Pagination page) {
+        TypedQuery<Product> query = em.createQuery("from Product",Product.class);
+        query.setFirstResult(page.getFirst()!= null?page.getFirst():0);
+        query.setMaxResults(page.getMax() != null ? page.getMax():Pagination.SIZE);
         List<Product> entityList = query.getResultList();
         Type listType = new TypeToken<List<ProductDto>>() {}.getType();
         List<ProductDto> dtoList = groceryMapper.map(entityList, listType);

@@ -58,7 +58,7 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
         LOG.info(String.format("category %s",product.getCategory().getCategoryName()));
     }
     
-     @Test
+    @Test
     public void testUpdateProduct() {
         ProductDto productDto = new ProductDto();
         productDto.setProductId(1l);
@@ -74,6 +74,12 @@ public class ProductServiceTest extends BaseIntegrationServiceTest {
         System.out.println(String.format("product %s",product));
         Assert.assertEquals("PROD",product.getProductName());
         Assert.assertEquals("description",product.getDescription()); 
+    }
+    
+    @Test
+    public void testCount() {
+        Long count = productService.count();
+        Assert.assertTrue("product size",count.intValue()>=1);
     }
     
 }

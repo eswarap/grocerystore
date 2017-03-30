@@ -29,6 +29,13 @@
                 </td>
             </tr>
         </c:forEach>
+        <div class="pagination">
+            <c:forEach begin="${startpage}" end="${endpage}" var="p">
+                <a href="<c:url value="/products/getall" >
+                    <c:param name="page" value="${p}"/>${p}</c:url>">${p}
+                </a>
+            </c:forEach>
+        </div>
         </tbody>
     </table>
 </div>
