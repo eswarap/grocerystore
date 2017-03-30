@@ -60,7 +60,7 @@ public class ProductController {
         model.addAttribute("startpage",startpage);
         model.addAttribute("endpage",endpage);
         model.addAttribute("products",productDtoList);
-        return new ModelAndView("product/productList");
+        return new ModelAndView("product/list");
     }
 
     @RequestMapping(value= {"add"}, method = RequestMethod.POST)
@@ -83,7 +83,7 @@ public class ProductController {
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("category",category);
         
-		return new ModelAndView("product/addProduct");
+		return new ModelAndView("product/add");
     }
     
     @RequestMapping(value = "edit/{prodId}", method = RequestMethod.GET)
@@ -98,7 +98,7 @@ public class ProductController {
         model.addAttribute("categoryList",categoryList);
         model.addAttribute("category",categoryDto);
         model.addAttribute("productId",prodId);
-		return new ModelAndView("product/editProduct");
+		return new ModelAndView("product/edit");
     }
     
     @RequestMapping(value= "update", method = RequestMethod.POST)

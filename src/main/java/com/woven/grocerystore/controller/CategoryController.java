@@ -55,7 +55,7 @@ public class CategoryController {
         model.addAttribute("startpage",startpage);
         model.addAttribute("endpage",endpage);
         
-        return new ModelAndView("category/categoryList");
+        return new ModelAndView("category/list");
     }
 
     @RequestMapping(value= {"add"}, method = RequestMethod.POST)
@@ -73,7 +73,7 @@ public class CategoryController {
         CategoryDto categoryDto = new CategoryDto();
         model.addAttribute("category",categoryDto);
         
-		return new ModelAndView("category/addCategory");
+		return new ModelAndView("category/add");
     }
     
     @RequestMapping(value = "edit/{catId}", method = RequestMethod.GET)
@@ -86,7 +86,7 @@ public class CategoryController {
         model.addAttribute("category",categoryDto);
         model.addAttribute("categoryId",catId);
         
-		return new ModelAndView("category/editCategory");
+		return new ModelAndView("category/edit");
     }
     
     @RequestMapping(value= "update", method = RequestMethod.POST)

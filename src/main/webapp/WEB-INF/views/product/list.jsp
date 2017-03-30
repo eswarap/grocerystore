@@ -31,7 +31,7 @@
         </c:forEach>
         <div class="pagination">
             <c:forEach begin="${startpage}" end="${endpage}" var="p">
-                <a href="<c:url value="/products/getall" >
+                <a href="<c:url value="/products/list" >
                     <c:param name="page" value="${p}"/>${p}</c:url>">${p}
                 </a>
             </c:forEach>
