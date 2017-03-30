@@ -1,6 +1,5 @@
 package com.woven.grocerystore.controller;
 
-
 import org.junit.Test;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
@@ -12,69 +11,65 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
-public class ProductControllerIT extends BaseControllerIT {
-    
-   
+public class CategoryControllerIT extends BaseControllerIT {
+     
     @Test
     public void testList() throws Exception {
-        super.mockMvc.perform(get("/products/list?page=1"))
+        super.mockMvc.perform(get("/categories/list?page=1"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("product/list"))
+                .andExpect(view().name("category/list"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }
     
     @Test
     public void testEnter() throws Exception {
-        super.mockMvc.perform(get("/products/enter"))
+        super.mockMvc.perform(get("/categories/enter"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("product/add"))
+                .andExpect(view().name("category/add"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }
 
     @Test
     public void testAdd() throws Exception {
-        super.mockMvc.perform(post("/products/add")
-                            .param("productName", "prod1")
+        super.mockMvc.perform(post("/categories/add")
+                            .param("categoryName", "prod1")
                             .param("description", "description1")
                             .param("category.categoryId", "1"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/products/list?page=1"))
+                .andExpect(view().name("redirect:/categories/list?page=1"))
+                .andExpect(model().hasNoErrors())
+                .andDo(MockMvcResultHandlers.log());
+    }
+    
+     @Test
+    public void testUpdate() throws Exception {
+        super.mockMvc.perform(post("/categories/update")
+                            .param("categoryName", "prod1")
+                            .param("description", "description1")
+                            .param("category.categoryId", "1"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/categories/list?page=1"))
+                .andExpect(model().hasNoErrors())
+                .andDo(MockMvcResultHandlers.log());
+    }
+    
+     @Test
+    public void testDelete() throws Exception {
+        super.mockMvc.perform(post("/categories/delete").param("categoryId","1"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/categories/list?page=1"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }
     
     @Test
     public void testEdit() throws Exception {
-        super.mockMvc.perform(get("/products/edit/1"))
+        super.mockMvc.perform(get("/categories/edit/1"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("product/edit"))
+                .andExpect(view().name("category/edit"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }
-    
-    @Test
-    public void testUpdate() throws Exception {
-        super.mockMvc.perform(post("/products/update")
-                            .param("productId", "1")        
-                            .param("productName", "prod1")
-                            .param("description", "description1")
-                            .param("category.categoryId", "1"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/products/list?page=1"))
-                .andExpect(model().hasNoErrors())
-                .andDo(MockMvcResultHandlers.log());
-    }
-    
-     
-    @Test
-    public void testDelete() throws Exception {
-        super.mockMvc.perform(post("/products/delete").param("productId","1"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/products/list?page=1"))
-                .andExpect(model().hasNoErrors())
-                .andDo(MockMvcResultHandlers.log());
-    }
-    
 }

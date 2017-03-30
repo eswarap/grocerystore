@@ -14,11 +14,10 @@
         </encoder>
     </appender>
 
-    <logger name="com.woven.grocerystore" level="INFO"/>
-    <logger name="org.hibernate.type" level="DEBUG" />
-    <logger name="org.hibernate" level="DEBUG"/>
-    <logger name="org.springframework" level="DEBUG"/>
-    <logger name="org.modelmapper" level="DEBUG"/>
+    <logger name="com.woven.grocerystore" level="INFO" additivity="false"/>
+    <!--logger name="org.hibernate.type" level="DEBUG" /-->
+    <!--logger name="org.hibernate" level="DEBUG"/-->
+    <logger name="org.springframework" level="DEBUG" additivity="false"/>
     
     <root level="DEBUG">
         <appender-ref ref="console"/>
