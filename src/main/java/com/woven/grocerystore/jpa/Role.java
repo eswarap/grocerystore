@@ -4,15 +4,15 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="USER_ROLE")
+@Table(name="ROLE")
 public class Role {
-    
     
     private Long roleId;
     private String roleName;
     private Set<User> users;
 
     @Id
+    @Column(name="ROLE_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getRoleId() {
         return roleId;

@@ -39,8 +39,8 @@ public class UserDetailsServiceImpl extends GroceryService<User>  implements Use
         
         User user;
         try {
-            TypedQuery<User> typedQuery = em.createQuery("from User WHERE column=?", User.class);
-            user = typedQuery.setParameter(1, "userName").getSingleResult();
+            TypedQuery<User> typedQuery = em.createQuery("from User WHERE userName=?", User.class);
+            user = typedQuery.setParameter(1, userName).getSingleResult();
         } catch (final NoResultException  | NonUniqueResultException nre ) {
             user = null;
         }  

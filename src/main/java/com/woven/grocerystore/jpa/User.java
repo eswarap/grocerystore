@@ -3,6 +3,8 @@ package com.woven.grocerystore.jpa;
 import javax.persistence.*;
 import java.util.Set;
 
+import com.woven.grocerystore.jpa.Role;
+
 @Entity
 @Table(name="USER")
 public class User {
@@ -14,6 +16,7 @@ public class User {
     private Set<Role> roles;
 
     @Id
+    @Column(name="USER_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getUserId() {
         return userId;
