@@ -20,3 +20,8 @@ INSERT INTO public.storeorder (store_order_id, order_date, order_status, total_q
 INSERT INTO public.orderitem (orderitem_id, quantity, unit_price, product_id, store_order_id) VALUES (1, 1, 12323.00, 1, 1);
 INSERT INTO public.orderitem (orderitem_id, quantity, unit_price, product_id, store_order_id) VALUES (2, 1, 12323.00, 2, 2);
 
+INSERT INTO role(role_id,role_name) VALUES (1,'ROLE_USER');
+
+INSERT INTO user(user_id,user_name,password) VALUES (1,'admin','password');
+
+INSERT INTO user_role(user_id,role_id) VALUES (1,1);

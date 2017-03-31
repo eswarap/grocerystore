@@ -7,13 +7,21 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <http pattern="/**" access="hasRole('ROLE_USER')">
     <http auto-config="true">
-        <intercept-url pattern="/" access="hasRole('ROLE_USER')"/>
-        <intercept-url pattern="/welcome" access="hasRole('ROLE_USER')"/>
-        <form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/login?error" username-parameter="username" password-parameter="password"/>
-        <logout logout-success-url="/login?logout" />
+        <form-login login-page="/user/login" default-target-url="/hello" authentication-failure-url="/login?error" username-parameter="username" password-parameter="password"/>
+        <logout logout-success-url="/user/login?logout" />
+        <intercept-url pattern="/hello" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/products/*" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/categories/*" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/user/*" access="hasRole('ROLE_USER')"/>
     </http>
 
+    <http pattern="/css/**" security="none" />
+    <http pattern="/images/**" security="none" />
+    <http pattern="/js/**" security="none" />
+    <http pattern="/resources/**" security="none" />
+    
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsService">
             <password-encoder ref="encoder"></password-encoder>

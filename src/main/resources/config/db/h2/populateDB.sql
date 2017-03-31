@@ -20,7 +20,6 @@ INSERT INTO storeorder (store_order_id, order_date, order_status, total_quantity
 INSERT INTO orderitem (orderitem_id, quantity, unit_price, product_id, store_order_id) VALUES (1, 1, 12323.00, 1, 1);
 INSERT INTO orderitem (orderitem_id, quantity, unit_price, product_id, store_order_id) VALUES (2, 1, 12323.00, 2, 2);
 
-
 INSERT INTO role(role_id,role_name) VALUES (1,'ROLE_USER');
 
 INSERT INTO user(user_id,user_name,password) VALUES (1,'admin','password');

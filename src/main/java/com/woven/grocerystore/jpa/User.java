@@ -15,6 +15,15 @@ public class User {
     private String passwordConfirm;
     private Set<Role> roles;
 
+    public User() {
+     
+    }
+    
+    public User(String userName,String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+    
     @Id
     @Column(name="USER_ID")
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -51,7 +51,7 @@ public class UserController {
 
         securityService.login(userForm.getUserName(), userForm.getPasswordConfirm());
 
-        return "redirect:/welcome";
+        return "redirect:/hello";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

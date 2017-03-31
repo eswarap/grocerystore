@@ -4,5 +4,5 @@ public interface SecurityService {
      
      String findLoggedInUserName();
      
-     void login(String username, String password);
+     boolean login(String username, String password);
 }
