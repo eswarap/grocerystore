@@ -11,10 +11,9 @@
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     
     <import resource="classpath:config/spring/prod-context.xml"/>
+    <import resource="classpath:config/spring/security-config.xml"/>
     
     <context:component-scan base-package="com.woven.grocerystore.controller" />
-    
-    <bean id="productMapper" class="org.modelmapper.ModelMapper"/>
     
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />

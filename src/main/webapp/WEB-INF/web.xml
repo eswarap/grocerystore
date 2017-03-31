@@ -6,6 +6,14 @@
     
     <display-name>Grocery Store</display-name>
     <description>Grocery Store application</description>   
+    
+          
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+  
+
+  
      <context-param>
         <param-name>spring.profiles.active</param-name>
         <param-value>javaee,jpa-pgsql</param-value>
@@ -19,6 +27,10 @@
         <param-value>javaee,jpa-pgsql</param-value>  
     </context-param>  
     
+     <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+     </context-param>
      <!-- Spring security -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
@@ -36,7 +48,6 @@
             <init-param>
               <param-name>contextConfigLocation</param-name>
               <param-value>/WEB-INF/applicationContext.xml</param-value>
-              <load-on-startup>1</load-on-startup>
              </init-param>
       </servlet>
     
@@ -45,13 +56,7 @@
            <url-pattern>/</url-pattern>
       </servlet-mapping>
       
-         
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-  
  
-  
     <session-config>
         <session-timeout>
             30
