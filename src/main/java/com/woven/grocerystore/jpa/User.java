@@ -6,7 +6,7 @@ import java.util.Set;
 import com.woven.grocerystore.jpa.Role;
 
 @Entity
-@Table(name="USER")
+@Table(name="STORE_USER")
 public class User {
     
     private Long userId;

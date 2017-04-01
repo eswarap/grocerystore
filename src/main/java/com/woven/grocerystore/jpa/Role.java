@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name="ROLE")
+@Table(name="USER_ROLE")
 public class Role {
     
     private Long roleId;

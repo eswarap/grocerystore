@@ -82,14 +82,14 @@ DROP TABLE IF EXISTS role CASCADE;
 CREATE TABLE role (
   role_id BIGINT PRIMARY KEY NOT NULL,
   role_name varchar(45) NOT NULL
-)
+);
 
-DROP TABLE IF EXISTS user CASCADE;
-CREATE TABLE user (
+DROP TABLE IF EXISTS store_user CASCADE;
+CREATE TABLE store_user (
   user_id BIGINT PRIMARY KEY NOT NULL,
   user_name varchar(255) NOT NULL,
   password varchar(255) NOT NULL
-) 
+) ;
 
 DROP TABLE IF EXISTS user_role CASCADE;
 CREATE TABLE user_role (
@@ -97,6 +97,6 @@ CREATE TABLE user_role (
   role_id BIGINT NOT NULL,
   PRIMARY KEY (user_id,role_id),
   CONSTRAINT fk_user_role_roleid FOREIGN KEY (role_id) REFERENCES role (role_id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_user_role_userid FOREIGN KEY (user_id) REFERENCES user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
-)
+  CONSTRAINT fk_user_role_userid FOREIGN KEY (user_id) REFERENCES store_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
