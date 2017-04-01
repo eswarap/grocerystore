@@ -7,10 +7,11 @@
 		http://www.springframework.org/schema/security
         http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http auto-config="false">
+    <http auto-config="false" >
         <intercept-url pattern="/user/login.jsp" access="permitAll" />
         <intercept-url pattern="/products/list.jsp" access="isAuthenticated" method="GET" />
         <intercept-url pattern="/products/edit.jsp" access="hasRole('ROLE_USER')" />
+        <form-login />
     </http>
 
     <authentication-manager alias="authenticationManager">
