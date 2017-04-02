@@ -12,7 +12,7 @@ public class HelloController {
     
     protected final Logger LOG = LoggerFactory.getLogger(getClass());
 
-    @RequestMapping("/hello")
+    @RequestMapping({"/","/hello"})
     public String hello(HttpServletRequest request) {
         
         LOG.info(request.getServletPath());

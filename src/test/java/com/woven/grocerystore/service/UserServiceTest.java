@@ -1,13 +1,10 @@
 package com.woven.grocerystore.service;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -24,6 +21,9 @@ public class UserServiceTest extends BaseIntegrationServiceTest{
     @Qualifier("userDetailsService")
     private UserDetailsService userDetailsService;
  
+    @Autowired
+    @Qualifier("securityService")
+    private SecurityService securityService;
     
     @Test
     public void testFindByUserName() {
@@ -33,6 +33,7 @@ public class UserServiceTest extends BaseIntegrationServiceTest{
     
     @Test
     public void testLoadUserByUsername() {
+        //securityService.login("admin","password");
         UserDetails actual = userDetailsService.loadUserByUsername("admin");
         Assert.assertNotNull(actual);
     }
