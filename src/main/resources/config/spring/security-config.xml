@@ -9,9 +9,11 @@
 
     <http auto-config="true">
         <intercept-url pattern="/" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/products/**" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/categories/**" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/hello" access="hasRole('ROLE_USER')"/>
-        <form-login login-page="/login.jsp" default-target-url="/" authentication-failure-url="/login?error" username-parameter="username" password-parameter="password"/>
-        <logout logout-success-url="/login?logout" />
+        <form-login login-page="/user/login" default-target-url="/hello" authentication-failure-url="/user/login?error" username-parameter="userName" password-parameter="password"/>
+        <logout logout-success-url="/user/login?logout" />
     </http>
 	
     <authentication-manager alias="authenticationManager">
