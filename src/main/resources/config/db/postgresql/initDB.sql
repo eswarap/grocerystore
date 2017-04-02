@@ -78,8 +78,8 @@ CREATE TABLE order_orderitem
 );
 CREATE UNIQUE INDEX uk_orderitem ON order_orderitem (orderitem_orderitem_id);
 
-DROP TABLE IF EXISTS role CASCADE;
-CREATE TABLE role (
+DROP TABLE IF EXISTS store_role CASCADE;
+CREATE TABLE store_role (
   role_id BIGINT PRIMARY KEY NOT NULL,
   role_name varchar(45) NOT NULL
 );
@@ -96,7 +96,7 @@ CREATE TABLE user_role (
   user_id BIGINT NOT NULL,
   role_id BIGINT NOT NULL,
   PRIMARY KEY (user_id,role_id),
-  CONSTRAINT fk_user_role_roleid FOREIGN KEY (role_id) REFERENCES role (role_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_user_role_roleid FOREIGN KEY (role_id) REFERENCES store_role (role_id) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT fk_user_role_userid FOREIGN KEY (user_id) REFERENCES store_user (user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
