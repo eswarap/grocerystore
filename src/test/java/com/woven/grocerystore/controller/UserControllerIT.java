@@ -22,7 +22,7 @@ public class UserControllerIT extends BaseControllerIT {
                 .param("userName", "admin")
                 .param("password", "password"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("user/login"))
+                .andExpect(view().name("redirect:/hello"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }
@@ -47,6 +47,24 @@ public class UserControllerIT extends BaseControllerIT {
                 .param("passwordConfirm", "newpassword"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/hello"))
+                .andExpect(model().hasNoErrors())
+                .andDo(MockMvcResultHandlers.log());
+    }
+    
+    @Test
+    public void testList() throws Exception {
+        super.mockMvc.perform(get("/user/list?page=1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("user/list"))
+                .andExpect(model().hasNoErrors())
+                .andDo(MockMvcResultHandlers.log());
+    }
+    
+     @Test
+    public void testShowRegistration() throws Exception {
+        super.mockMvc.perform(get("/user/registration"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("user/registration"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }

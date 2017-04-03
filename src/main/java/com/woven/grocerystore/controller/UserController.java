@@ -61,7 +61,8 @@ public class UserController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        return "redirect:/hello";
+        System.out.println("####i am here#######");
+        return "user/login";
     }
     
     @RequestMapping(value = "list", method = RequestMethod.GET)
