@@ -1,6 +1,7 @@
 package com.woven.grocerystore.service.impl;
 
 import java.util.HashSet;
+import java.util.List;
 
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.jpa.User;
 import com.woven.grocerystore.service.GroceryService;
 import com.woven.grocerystore.service.RoleService;
@@ -45,5 +47,15 @@ public class UserServiceImpl extends GroceryService<User>  implements UserServic
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(new HashSet<>(roleService.list()));
         return super.save(user);
+    }
+    
+    @Override
+    public List<User> list(Pagination pagination) {
+        TypedQuery<User> query = em.createQuery("from User",User.class);
+        query.setFirstResult(pagination.getFirst()!= null?pagination.getFirst():0);
+        query.setMaxResults(pagination.getMax() != null ? pagination.getMax():Pagination.SIZE);
+        List<User> entityList = query.getResultList();
+        
+        return entityList;
     }
 }

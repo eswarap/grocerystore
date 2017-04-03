@@ -1,9 +1,8 @@
 package com.woven.grocerystore.controller;
 
-import com.sun.mail.iap.BadCommandException;
 import com.woven.grocerystore.base.BaseControllerIT;
 import org.junit.Test;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.util.NestedServletException;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -28,7 +27,7 @@ public class UserControllerIT extends BaseControllerIT {
                 .andDo(MockMvcResultHandlers.log());
     }
 
-    @Test(expected = BadCredentialsException.class)
+    @Test(expected = NestedServletException.class)
     public void testWrongRegistration() throws Exception {
         super.mockMvc.perform(post("/user/registration")
                 .param("userName", "newuser")
@@ -47,7 +46,7 @@ public class UserControllerIT extends BaseControllerIT {
                 .param("password", "newpassword")
                 .param("passwordConfirm", "newpassword"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("/user/registration"))
+                .andExpect(view().name("redirect:/hello"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }

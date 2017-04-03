@@ -7,7 +7,7 @@ public class Pagination {
     public final static Integer SIZE = 10; 
     
     public Pagination() {
-        this.first = 1;
+        this.first = 0;
         this.max = SIZE;
     }
     public Pagination(Integer first,Integer max) {
