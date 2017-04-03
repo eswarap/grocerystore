@@ -3,17 +3,23 @@ package com.woven.grocerystore.service.impl;
 import java.util.HashSet;
 import java.util.List;
 
+import java.lang.reflect.Type;
+
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
 
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.woven.grocerystore.dto.UserDto;
 import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.jpa.User;
+import com.woven.grocerystore.mapper.GroceryMapper;
 import com.woven.grocerystore.service.GroceryService;
 import com.woven.grocerystore.service.RoleService;
 import com.woven.grocerystore.service.UserService;
@@ -27,7 +33,10 @@ public class UserServiceImpl extends GroceryService<User>  implements UserServic
     
     @Autowired
     private RoleService roleService;
-    
+
+    @Autowired
+    @Qualifier("groceryMapper")
+    private GroceryMapper groceryMapper;    
     
     @Override
     public User findByUsername(String userName) {
@@ -50,12 +59,14 @@ public class UserServiceImpl extends GroceryService<User>  implements UserServic
     }
     
     @Override
-    public List<User> list(Pagination pagination) {
+    public List<UserDto> list(Pagination pagination) {
         TypedQuery<User> query = em.createQuery("from User",User.class);
         query.setFirstResult(pagination.getFirst()!= null?pagination.getFirst():0);
         query.setMaxResults(pagination.getMax() != null ? pagination.getMax():Pagination.SIZE);
         List<User> entityList = query.getResultList();
         
-        return entityList;
+        Type listType = new TypeToken<List<UserDto>>() {}.getType();
+        List<UserDto> dtoList = groceryMapper.map(entityList, listType);
+        return dtoList;
     }
 }

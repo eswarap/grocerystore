@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.woven.grocerystore.dto.ProductDto;
 import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.jpa.User;
+import com.woven.grocerystore.dto.UserDto;
 import com.woven.grocerystore.service.SecurityService;
 import com.woven.grocerystore.service.UserService;
 
@@ -61,10 +61,10 @@ public class UserController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        return "user/login";
+        return "redirect:/hello";
     }
     
-     @RequestMapping(value = "list", method = RequestMethod.GET)
+    @RequestMapping(value = "list", method = RequestMethod.GET)
     public ModelAndView list(Model model,@RequestParam(value="page",required=false) Integer page) {
         
         int count = userService.count().intValue();
@@ -75,7 +75,7 @@ public class UserController {
         int max = first + Pagination.SIZE;
         max = max > count ? count :max;
         Pagination pagination = new Pagination(first,max);
-        List<User> userList = userService.list(pagination); 
+        List<UserDto> userList = userService.list(pagination); 
         model.addAttribute("startpage",startpage);
         model.addAttribute("endpage",endpage);
         model.addAttribute("users",userList);

@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import com.woven.grocerystore.base.BaseIntegrationServiceTest;
 import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.jpa.User;
+import com.woven.grocerystore.dto.UserDto;
 
 public class UserServiceTest extends BaseIntegrationServiceTest{
     
@@ -52,9 +53,9 @@ public class UserServiceTest extends BaseIntegrationServiceTest{
     @Test
     public void testList() {
     
-        List<User> userList = userService.list(new Pagination(0,5));
-        System.out.println("size ="+userList.size());
-        Assert.assertTrue("userList",userList.size()>0);
+        List<UserDto> userDtoList = userService.list(new Pagination(0,5));
+        System.out.println("size ="+userDtoList.size());
+        Assert.assertTrue("userDtoList",userDtoList.size()>0);
         
     }
 }

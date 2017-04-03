@@ -16,8 +16,9 @@
         <c:forEach items="${users}" var="user">
             <tr>
                 <td><a href="${editUrl}/${user.userId}"/>${user.userName}</a></td>
-                <c:forEach items="${roles}" var="role">
-                    <td>${role.roleName}</td>
+                <c:forEach items="${roles}" var="role" varStatus="status">
+                     <c:out value="${role.roleName}" />
+                    <c:if test="${!status.last}">,</c:if>
                 </c:forEach>
                 <td >
                     <form id="deleteUser" action="${deleteUrl}" method="POST">

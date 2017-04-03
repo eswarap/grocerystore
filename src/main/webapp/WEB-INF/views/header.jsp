@@ -13,12 +13,12 @@
   <header>
    <h1>Neighbourhood Store</h1>
 </header>
-<c:url value="/j_spring_security_logout" var="logoutUrl" />
+ <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <form id="logoutForm" method="POST" action="${contextPath}/logout">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
 
-	<!-- csrt for log out-->
-	<form action="${logoutUrl}" method="post" id="logoutForm">
-	  <input type="hidden"
-		name="${_csrf.parameterName}"
-		value="${_csrf.token}" />
-	</form>
+        <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
+
+    </c:if>
      <%@ include file="menu.jsp" %>

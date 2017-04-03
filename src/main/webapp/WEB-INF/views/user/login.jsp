@@ -14,7 +14,7 @@
    <h1>Neighbourhood Store</h1>
 </header>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<form method="POST" action="<c:url value='/j_spring_security_check' />"  class="form-signin">
+<form method="POST" action="${contextPath}/login"  class="form-signin">
     <h2 class="form-heading">Log in</h2>
 
     <div class="form-group ${error != null ? 'has-error' : ''}">
