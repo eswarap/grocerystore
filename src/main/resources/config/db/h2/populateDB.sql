@@ -22,6 +22,6 @@ INSERT INTO orderitem (orderitem_id, quantity, unit_price, product_id, store_ord
 
 INSERT INTO store_role (role_id,role_name) VALUES (1,'ROLE_USER');
 
-INSERT INTO store_user (user_id,user_name,password) VALUES (1,'admin','password');
+INSERT INTO store_user (user_id,user_name,password) VALUES (1,'admin','$2a$11$yHVYFmwSsj0phP0xMueI4.Ku671YBnRZai1Mt.YzJqIwD7qWZEMRu');
 
 INSERT INTO user_role(user_id,role_id) VALUES (1,1);

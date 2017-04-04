@@ -38,6 +38,7 @@ public class UserServiceTest extends BaseIntegrationServiceTest{
     public void testLoadUserByUsername() {
         //securityService.login("admin","password");
         UserDetails actual = userDetailsService.loadUserByUsername("admin");
+        System.out.println("actual user password "+actual.getPassword());
         Assert.assertNotNull(actual);
     }
     

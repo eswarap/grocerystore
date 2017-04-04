@@ -61,9 +61,11 @@ public class UserController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        System.out.println("####i am here#######");
+        
+        
         return "user/login";
     }
+    
     
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public ModelAndView list(Model model,@RequestParam(value="page",required=false) Integer page) {

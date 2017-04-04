@@ -14,8 +14,15 @@
    <h1>Neighbourhood Store</h1>
 </header>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<form method="POST" action="${contextPath}/user/login">
+<form method="POST" action="${contextPath}/login" >
     <h2 class="form-heading">Log in</h2>
+    
+    <c:if test="${not empty error}">
+		<div class="error">${error}</div>
+	</c:if>
+	<c:if test="${not empty msg}">
+		<div class="msg">${msg}</div>
+	</c:if>
 
     <div class="form-group ${error != null ? 'has-error' : ''}">
         <span>${message}</span>

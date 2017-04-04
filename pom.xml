@@ -21,7 +21,7 @@
         <junit.version>4.12</junit.version>
         <spring-data-jpa.version>1.11.1.RELEASE</spring-data-jpa.version>
         <jackson.version>2.4.4</jackson.version>
-        <springsecurity.version>4.0.4.RELEASE</springsecurity.version>
+        <springsecurity.version>4.2.2.RELEASE</springsecurity.version>
         <skipTests>false</skipTests>
         <skipITs>${skipTests}</skipITs>
         <skipUTs>${skipTests}</skipUTs>
@@ -190,6 +190,12 @@
                 <artifactId>spring-security-taglibs</artifactId>
                 <version>${springsecurity.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-test -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-test</artifactId>
+                <version>${springsecurity.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>log4j-over-slf4j</artifactId>
@@ -323,6 +329,11 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>    
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>

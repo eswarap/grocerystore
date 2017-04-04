@@ -13,7 +13,7 @@
 
     <!-- import the dataSource definition -->
     <import resource="classpath:config/spring/dev-config.xml"/>
-    <import resource="classpath:config/spring/security-config.xml"/>        
+    <import resource="classpath:config/spring/security-context.xml"/>        
     <tx:annotation-driven />
      
     <context:component-scan base-package="com.woven.grocerystore" />

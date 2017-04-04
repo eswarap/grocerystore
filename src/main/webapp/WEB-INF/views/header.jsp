@@ -13,6 +13,7 @@
   <header>
    <h1>Neighbourhood Store</h1>
 </header>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
  <c:if test="${pageContext.request.userPrincipal.name != null}">
         <form id="logoutForm" method="POST" action="${contextPath}/logout">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
