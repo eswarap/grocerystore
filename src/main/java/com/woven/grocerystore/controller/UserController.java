@@ -1,7 +1,10 @@
 package com.woven.grocerystore.controller;
 
-import java.util.List;
-
+import com.woven.grocerystore.dto.UserDto;
+import com.woven.grocerystore.jpa.Pagination;
+import com.woven.grocerystore.jpa.User;
+import com.woven.grocerystore.service.SecurityService;
+import com.woven.grocerystore.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.woven.grocerystore.jpa.Pagination;
-import com.woven.grocerystore.jpa.User;
-import com.woven.grocerystore.dto.UserDto;
-import com.woven.grocerystore.service.SecurityService;
-import com.woven.grocerystore.service.UserService;
+import java.util.List;
 
 @Controller
 @RequestMapping(value="/user")
@@ -61,8 +60,6 @@ public class UserController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        
-        
         return "user/login";
     }
     
@@ -85,4 +82,11 @@ public class UserController {
         return new ModelAndView("user/list");
     }
 
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public String remove(@RequestParam("userId") Long productId) {
+
+        this.userService.delete(productId);
+        return "redirect:/user/list?page=1";
+
+    }
 }

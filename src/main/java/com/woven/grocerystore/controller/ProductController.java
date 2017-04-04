@@ -1,31 +1,25 @@
 package com.woven.grocerystore.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.woven.grocerystore.dto.CategoryDto;
+import com.woven.grocerystore.dto.ProductDto;
+import com.woven.grocerystore.jpa.Category;
+import com.woven.grocerystore.jpa.Pagination;
+import com.woven.grocerystore.jpa.Product;
+import com.woven.grocerystore.mapper.GroceryMapper;
+import com.woven.grocerystore.service.CategoryService;
+import com.woven.grocerystore.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.woven.grocerystore.jpa.Pagination;
-import com.woven.grocerystore.jpa.Category;
-import com.woven.grocerystore.jpa.Product;
-import com.woven.grocerystore.mapper.GroceryMapper;
-import com.woven.grocerystore.dto.ProductDto;
-import com.woven.grocerystore.dto.CategoryDto;
-import com.woven.grocerystore.service.ProductService;
-import com.woven.grocerystore.service.CategoryService;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.List;
 
 @Controller
 @RequestMapping(value="/products")

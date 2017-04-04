@@ -1,13 +1,13 @@
 package com.woven.grocerystore.service;
 
 import com.woven.grocerystore.dto.ProductDto;
-import com.woven.grocerystore.jpa.Product;
 import com.woven.grocerystore.jpa.Pagination;
+import com.woven.grocerystore.jpa.Product;
 
 import java.util.List;
 
 /**
- * Created by eswaraprasadh on 09-03-2017.
+ * Created by eswarap on 09-03-2017.
  */
 public interface ProductService extends GenericGroceryService<Product>{
     

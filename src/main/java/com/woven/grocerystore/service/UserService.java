@@ -1,10 +1,10 @@
 package com.woven.grocerystore.service;
 
-import java.util.List;
-
-import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.dto.UserDto;
+import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.jpa.User;
+
+import java.util.List;
 
 public interface UserService  extends GenericGroceryService<User> {
 

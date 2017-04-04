@@ -1,14 +1,12 @@
 package com.woven.grocerystore.service.impl;
 
 import com.woven.grocerystore.jpa.StoreOrder;
-import com.woven.grocerystore.service.OrderService;
 import com.woven.grocerystore.service.GroceryService;
-
+import com.woven.grocerystore.service.OrderService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
-
 import java.util.Collection;
 
 @Service(value="orderService")

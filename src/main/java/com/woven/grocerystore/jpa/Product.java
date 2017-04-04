@@ -1,7 +1,6 @@
 package com.woven.grocerystore.jpa;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 
 @Entity

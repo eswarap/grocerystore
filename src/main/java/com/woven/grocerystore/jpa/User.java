@@ -3,8 +3,6 @@ package com.woven.grocerystore.jpa;
 import javax.persistence.*;
 import java.util.Set;
 
-import com.woven.grocerystore.jpa.Role;
-
 @Entity
 @Table(name="STORE_USER")
 public class User {

@@ -1,8 +1,8 @@
 package com.woven.grocerystore.service;
 
-import java.util.List;
-
 import com.woven.grocerystore.jpa.Role;
+
+import java.util.List;
 
 public interface RoleService extends GenericGroceryService<Role> {
     

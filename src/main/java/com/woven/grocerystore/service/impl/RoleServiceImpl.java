@@ -1,15 +1,13 @@
 package com.woven.grocerystore.service.impl;
 
-import java.util.List;
-
-import javax.persistence.TypedQuery;
-
+import com.woven.grocerystore.jpa.Role;
+import com.woven.grocerystore.service.GroceryService;
+import com.woven.grocerystore.service.RoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.woven.grocerystore.jpa.Role;
-import com.woven.grocerystore.service.RoleService;
-import com.woven.grocerystore.service.GroceryService;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Service(value="roleService")
 @Transactional
