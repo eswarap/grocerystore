@@ -22,7 +22,7 @@ public class UserControllerIT extends BaseControllerIT {
                 .param("userName", "admin")
                 .param("password", "password"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("redirect:/hello"))
+                .andExpect(view().name("user/login"))
                 .andExpect(model().hasNoErrors())
                 .andDo(MockMvcResultHandlers.log());
     }
