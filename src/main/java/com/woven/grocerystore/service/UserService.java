@@ -12,4 +12,7 @@ public interface UserService  extends GenericGroceryService<User> {
     
     List<UserDto> list(Pagination pagination);
     
+    boolean update(final UserDto userDto);
+    
+    boolean save(final UserDto userDto);
 }

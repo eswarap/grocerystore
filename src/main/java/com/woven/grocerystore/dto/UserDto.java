@@ -9,8 +9,17 @@ public class UserDto implements Serializable {
     
     private Long userId;
     private String userName;
+    private String password;
+    private List<RoleDto> roleList;
     
-    List<RoleDto> roleList;
+    protected UserDto() {
+
+    }
+    
+    public UserDto(String userName,String password) {
+        this.userName = userName;
+        this.password = password;
+    }
     
     public Long getUserId() {
         return userId;
@@ -28,6 +37,13 @@ public class UserDto implements Serializable {
         this.userName = userName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public List<RoleDto> getRoleList() {
         return roleList;

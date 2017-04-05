@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.woven.grocerystore.dto.UserDto;
 import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.jpa.User;
-import com.woven.grocerystore.dto.UserDto;
+import com.woven.grocerystore.mapper.GroceryMapper;
+import com.woven.grocerystore.service.RoleService;
 import com.woven.grocerystore.service.SecurityService;
 import com.woven.grocerystore.service.UserService;
 
@@ -83,6 +85,15 @@ public class UserController {
         model.addAttribute("endpage",endpage);
         model.addAttribute("users",userList);
         return new ModelAndView("user/list");
+    }
+    
+    
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public String remove(@RequestParam("userId") Long userId) {
+        
+        this.userService.delete(userId);
+    	return "redirect:/user/list?page=1";
+    
     }
 
 }
