@@ -17,7 +17,8 @@
       <intercept-url pattern="/hello" access="isAuthenticated()"/>
       <intercept-url pattern="/products/**" access="isAuthenticated()"/>
       <intercept-url pattern="/categories/**" access="isAuthenticated()"/> 
-      <intercept-url pattern="/user/list" access="isAuthenticated()"/>       
+      <intercept-url pattern="/user/list" access="isAuthenticated()"/>     
+      <intercept-url pattern="/user/delete" access="isAuthenticated()"/>     
         <form-login login-page="/user/login" default-target-url="/hello" 
                     authentication-failure-url="/user/login?error" 
                     username-parameter="userName" password-parameter="password"/>

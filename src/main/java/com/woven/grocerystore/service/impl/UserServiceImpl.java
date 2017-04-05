@@ -1,12 +1,15 @@
 package com.woven.grocerystore.service.impl;
 
-import com.woven.grocerystore.dto.UserDto;
-import com.woven.grocerystore.jpa.Pagination;
-import com.woven.grocerystore.jpa.User;
-import com.woven.grocerystore.mapper.GroceryMapper;
-import com.woven.grocerystore.service.GroceryService;
-import com.woven.grocerystore.service.RoleService;
-import com.woven.grocerystore.service.UserService;
+import java.lang.reflect.Type;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
+import javax.persistence.TypedQuery;
+
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,12 +17,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
-import javax.persistence.TypedQuery;
-import java.lang.reflect.Type;
-import java.util.HashSet;
-import java.util.List;
+import com.woven.grocerystore.dto.UserDto;
+import com.woven.grocerystore.jpa.Pagination;
+import com.woven.grocerystore.jpa.Role;
+import com.woven.grocerystore.jpa.User;
+import com.woven.grocerystore.mapper.GroceryMapper;
+import com.woven.grocerystore.service.GroceryService;
+import com.woven.grocerystore.service.RoleService;
+import com.woven.grocerystore.service.UserService;
 
 @Service(value="userService")
 @Transactional
@@ -65,5 +70,23 @@ public class UserServiceImpl extends GroceryService<User>  implements UserServic
         Type listType = new TypeToken<List<UserDto>>() {}.getType();
         List<UserDto> dtoList = groceryMapper.map(entityList, listType);
         return dtoList;
+    }
+
+    @Override
+    public boolean update(UserDto userDto) {
+        User user = groceryMapper.map(userDto,User.class);
+        Set<Role> roles = userDto.getRoleList().stream().map(roleDto -> roleService.find(roleDto.getRoleId())).collect(Collectors.toSet());
+        user.setRoles(roles);
+        super.update(user);
+        return true;
+    }
+
+    @Override
+    public boolean save(UserDto userDto) {
+        User user = groceryMapper.map(userDto,User.class);
+        Set<Role> roles = userDto.getRoleList().stream().map(roleDto -> roleService.find(roleDto.getRoleId())).collect(Collectors.toSet());
+        user.setRoles(roles);
+        super.save(user);
+        return true;
     }
 }

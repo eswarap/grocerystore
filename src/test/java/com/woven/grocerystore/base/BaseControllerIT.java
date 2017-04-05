@@ -21,9 +21,7 @@ import org.springframework.test.annotation.Rollback;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Configuration
 @ActiveProfiles("jpa-pgsql")
-@ContextConfiguration(locations={"file:src/main/resources/config/spring/security-config.xml",
-                                  "file:src/main/resources/config/spring/prod-config.xml",
-                                   "file:src/main/resources/config/spring/prod-context.xml",})
+@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/applicationContext.xml"})
 @WebAppConfiguration
 @Transactional
 @Rollback(true)
