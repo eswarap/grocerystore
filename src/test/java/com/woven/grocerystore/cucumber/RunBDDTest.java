@@ -1,5 +1,6 @@
 package com.woven.grocerystore.cucumber;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -17,6 +18,7 @@ import cucumber.api.junit.Cucumber;
 			)
 public class RunBDDTest {
     @Test
+	@Ignore
 	public void check() throws InterruptedException{
 	    StepDefinition.getInstance().navigate_to_the_facebook_login_page();;
 		Thread.sleep(1000);
