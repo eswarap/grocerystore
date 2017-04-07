@@ -8,13 +8,16 @@ import com.woven.grocerystore.mapper.GroceryMapper;
 import com.woven.grocerystore.service.CategoryService;
 import com.woven.grocerystore.service.GroceryService;
 import com.woven.grocerystore.service.ProductService;
+
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.TypedQuery;
+
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -59,6 +62,7 @@ public class ProductServiceImpl extends GroceryService<Product> implements Produ
     }
     
     @Override
+    @Cacheable("products")
     public List<ProductDto> list(Pagination page) {
         TypedQuery<Product> query = em.createQuery("from Product",Product.class);
         query.setFirstResult(page.getFirst()!= null?page.getFirst():0);

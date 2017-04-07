@@ -1,20 +1,23 @@
 package com.woven.grocerystore.service.impl;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+
+import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.woven.grocerystore.dto.CategoryDto;
 import com.woven.grocerystore.jpa.Category;
 import com.woven.grocerystore.jpa.Pagination;
 import com.woven.grocerystore.mapper.GroceryMapper;
 import com.woven.grocerystore.service.CategoryService;
 import com.woven.grocerystore.service.GroceryService;
-import org.modelmapper.TypeToken;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.TypedQuery;
-import java.lang.reflect.Type;
-import java.util.List;
 
 /**
  * Created by eswaraprasadh on 09-03-2017.
@@ -28,6 +31,7 @@ public class CategoryServiceImpl extends GroceryService<Category> implements Cat
     private GroceryMapper groceryMapper;
 
     @Override
+    @Cacheable("categories")
     public List<CategoryDto> list(Pagination page) {
         TypedQuery<Category> query = em.createQuery("from Category",Category.class);
         query.setFirstResult(page.getFirst()!= null?page.getFirst():0);
