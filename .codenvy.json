@@ -23,8 +23,7 @@
         "location": "eclipse/selenium",
         "type": "dockerimage"
       }
-    }
-  },
+    },
   "defaultEnv": "wksp-grocerystore",
   "projects": [
     {
