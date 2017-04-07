@@ -2,10 +2,6 @@
   "environments": {
     "wksp-grocerystore": {
       "machines": {
-        "db": {
-          "attributes": {
-            "memoryLimitBytes": "1073741824"
-          },
           "servers": {},
           "agents": [
             "org.eclipse.che.terminal"
