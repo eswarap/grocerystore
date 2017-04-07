@@ -24,9 +24,8 @@
         }
       },
       "recipe": {
-        "type": "compose",
-        "content": "services:\n  db:\n    image: mysql\n    environment:\n      MYSQL_ROOT_PASSWORD: password\n      MYSQL_DATABASE: petclinic\n      MYSQL_USER: petclinic\n      MYSQL_PASSWORD: password\n    mem_limit: 1073741824\n  dev-machine:\n    image: eclipse/ubuntu_jdk8\n    mem_limit: 2147483648\n    depends_on:\n      - db\n",
-        "contentType": "application/x-yaml"
+        "location": "eclipse/selenium",
+        "type": "dockerimage"
       }
     }
   },
@@ -57,12 +56,6 @@
   ],
   "name": "wksp-grocerystore",
   "commands": [
-    {
-      "commandLine": "mysql -u $MYSQL_USER -p$MYSQL_PASSWORD -e 'show databases;'",
-      "name": "show databases",
-      "attributes": {},
-      "type": "custom"
-    },
     {
       "commandLine": "cd  ${current.project.path} && mvn clean install -DskipTests && rm -rf  $TOMCAT_HOME/webapps/grocerystore* && cp  ${current.project.path}/target/grocerystore-1.0.war $TOMCAT_HOME/webapps/ && cp  ${current.project.path}/target/dependency/grocerystore-1.0.xml  $TOMCAT_HOME/conf/Catalina/localhost/  && rm -rf $TOMCAT_HOME/work/Catalina/localhost/grocerystore-1.0 && $TOMCAT_HOME/bin/catalina.sh run",
       "name": "grocerystore build deploy",
