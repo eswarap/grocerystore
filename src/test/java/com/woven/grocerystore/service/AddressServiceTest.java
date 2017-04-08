@@ -34,7 +34,7 @@ public class AddressServiceTest extends BaseIntegrationServiceTest {
     public void testFetchAll() {
         Collection<Address> address = addressService.fetchAllAddress();
         Assert.assertNotNull(address);
-        System.out.println("address size "+address.size());
+        LOG.info("address size "+address.size());
     }
     
 }

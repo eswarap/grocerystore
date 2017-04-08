@@ -8,7 +8,6 @@ import javax.persistence.TypedQuery;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +30,6 @@ public class CategoryServiceImpl extends GroceryService<Category> implements Cat
     private GroceryMapper groceryMapper;
 
     @Override
-    @Cacheable("categories")
     public List<CategoryDto> list(Pagination page) {
         TypedQuery<Category> query = em.createQuery("from Category",Category.class);
         query.setFirstResult(page.getFirst()!= null?page.getFirst():0);

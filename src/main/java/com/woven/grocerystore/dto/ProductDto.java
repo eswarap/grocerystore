@@ -1,6 +1,7 @@
 package com.woven.grocerystore.dto;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class ProductDto implements Serializable {
     
@@ -43,4 +44,21 @@ public class ProductDto implements Serializable {
         this.productName = productName;
     }
     
+    @Override
+    public int hashCode() {
+        return Objects.hash(description,productName);
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        
+        if (o == this) return true;
+        if (!(o instanceof ProductDto)) {
+            return false;
+        }
+        ProductDto productDto = (ProductDto) o;
+        return description == productDto.description &&
+                Objects.equals(productName, productDto.productName);
+
+    }
 }

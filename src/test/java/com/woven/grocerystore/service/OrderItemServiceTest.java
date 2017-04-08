@@ -1,20 +1,19 @@
 package com.woven.grocerystore.service;
 
-import com.woven.grocerystore.base.BaseIntegrationServiceTest;
-import com.woven.grocerystore.jpa.OrderItem;
-import com.woven.grocerystore.jpa.Product;
-import com.woven.grocerystore.jpa.StoreOrder;
+import java.math.BigDecimal;
+import java.util.Collection;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
-import java.util.Collection;
+import com.woven.grocerystore.base.BaseIntegrationServiceTest;
+import com.woven.grocerystore.jpa.OrderItem;
+import com.woven.grocerystore.jpa.Product;
+import com.woven.grocerystore.jpa.StoreOrder;
 
 public class OrderItemServiceTest extends BaseIntegrationServiceTest  {
    

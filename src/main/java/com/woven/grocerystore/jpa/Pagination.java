@@ -1,6 +1,10 @@
 package com.woven.grocerystore.jpa;
 
-public class Pagination {
+import java.io.Serializable;
+
+public class Pagination implements Serializable {
+    
+    private static final long serialVersionUID = 1l;
     
     private Integer first;
     private Integer max;
