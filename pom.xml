@@ -91,6 +91,11 @@
                   </exclusions>
             </dependency>
             <dependency>
+        		<groupId>org.springframework</groupId>
+        		<artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+        	</dependency>
+            <dependency>
                 <groupId>org.apache.tomcat</groupId>
                 <artifactId>tomcat-jdbc</artifactId>
                 <version>${tomcat-jdbc.version}</version>
@@ -269,6 +274,10 @@
             <artifactId>spring-context</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework</groupId>
+        	<artifactId>spring-context-support</artifactId>
+        </dependency>                
+        <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jdbc</artifactId>
             <scope>runtime</scope>
@@ -365,7 +374,6 @@
         <dependency>
              <groupId>net.sf.ehcache</groupId>
              <artifactId>ehcache</artifactId>
-             <scope>test</scope>
         </dependency>        
     </dependencies>
     <build>
