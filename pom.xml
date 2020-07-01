@@ -20,7 +20,7 @@
         <postgresql.version>9.4.1211</postgresql.version>
         <junit.version>4.12</junit.version>
         <spring-data-jpa.version>1.11.23.RELEASE</spring-data-jpa.version>
-        <jackson.version>2.4.4</jackson.version>
+        <jackson.version>2.9.10.5</jackson.version>
         <springsecurity.version>4.2.2.RELEASE</springsecurity.version>
         <cucumber.version>1.2.4</cucumber.version>
         <skipTests>false</skipTests>
